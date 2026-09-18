@@ -1,7 +1,7 @@
 // 🎂 SHAMAMA MY CHURAIL — BIRTHDAY SURPRISE
 
 // 19 September 2026 — 12:00 AM Pakistan Time
-const birthdayTime = new Date("2026-09-18T19:00:00Z").getTime();
+const birthdayTime = new Date().getTime() - 1000;
 
 const countdownScreen = document.getElementById("countdown-screen");
 const birthdayScreen = document.getElementById("birthday-screen");
