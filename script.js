@@ -1,69 +1,260 @@
-const slides = [...document.querySelectorAll(".slide")];
-const dots = [...document.querySelectorAll(".dot")];
+let currentSlide = 0;
 
-let current = 0;
+const slides = document.querySelectorAll(".slide");
 
-function showSlide(index) {
-    current = (index + slides.length) % slides.length;
+const dots = [
+    document.getElementById("dot1"),
+    document.getElementById("dot2"),
+    document.getElementById("dot3")
+];
 
-    slides.forEach((slide, i) => {
-        slide.classList.toggle("active", i === current);
-    });
 
-    dots.forEach((dot, i) => {
-        dot.classList.toggle("active", i === current);
-    });
+/* SHOW SLIDE */
 
-    if (current === 2) {
-        burst();
+function showSlide(number) {
+
+    if (number < 0) {
+        number = slides.length - 1;
     }
+
+    if (number >= slides.length) {
+        number = 0;
+    }
+
+    currentSlide = number;
+
+
+    slides.forEach(function(slide, index) {
+
+        if (index === currentSlide) {
+            slide.classList.add("active");
+        } else {
+            slide.classList.remove("active");
+        }
+
+    });
+
+
+    dots.forEach(function(dot, index) {
+
+        if (index === currentSlide) {
+            dot.classList.add("active");
+        } else {
+            dot.classList.remove("active");
+        }
+
+    });
+
+
+    if (currentSlide === 2) {
+        heartBurst();
+    }
+
 }
 
 
-/* NEXT BUTTONS */
+/* NEXT */
 
-document.querySelectorAll(".next").forEach(button => {
+function nextSlide() {
 
-    button.addEventListener("click", () => {
-        showSlide(current + 1);
-    });
+    showSlide(currentSlide + 1);
 
-});
+}
 
 
-/* RESTART */
+/* HOME */
 
-document.querySelector(".restart").addEventListener("click", () => {
+function goHome() {
+
     showSlide(0);
-});
+
+}
 
 
-/* SWIPE ON MOBILE */
+/* MUSIC */
 
-let touchStartX = 0;
+function playMusic() {
+
+    const music =
+        document.getElementById("birthdayMusic");
+
+    const button =
+        document.getElementById("musicButton");
+
+
+    if (music.paused) {
+
+        music.play()
+            .then(function() {
+
+                button.innerHTML =
+                    "⏸ Pause Birthday Music";
+
+            })
+            .catch(function() {
+
+                button.innerHTML =
+                    "🎵 Tap Again";
+
+            });
+
+    } else {
+
+        music.pause();
+
+        button.innerHTML =
+            "🎵 Play Birthday Music";
+
+    }
+
+}
+
+
+/* FLOATING HEARTS */
+
+const heartContainer =
+    document.getElementById("hearts");
+
+
+const symbols = [
+    "♡",
+    "♥",
+    "💗",
+    "💖",
+    "✨",
+    "✦"
+];
+
+
+function createHeart() {
+
+    const heart =
+        document.createElement("span");
+
+
+    heart.className = "heart";
+
+
+    heart.innerHTML =
+        symbols[
+            Math.floor(
+                Math.random() * symbols.length
+            )
+        ];
+
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+
+    heart.style.fontSize =
+        (14 + Math.random() * 22) + "px";
+
+
+    heart.style.animationDuration =
+        (6 + Math.random() * 6) + "s";
+
+
+    heartContainer.appendChild(heart);
+
+
+    setTimeout(function() {
+
+        heart.remove();
+
+    }, 13000);
+
+}
+
+
+setInterval(createHeart, 700);
+
+
+/* HEART BURST */
+
+function heartBurst() {
+
+    for (let i = 0; i < 25; i++) {
+
+        const heart =
+            document.createElement("span");
+
+
+        heart.className = "heart";
+
+
+        heart.innerHTML =
+            symbols[
+                Math.floor(
+                    Math.random() * symbols.length
+                )
+            ];
+
+
+        heart.style.left =
+            (40 + Math.random() * 20) + "vw";
+
+
+        heart.style.bottom =
+            (30 + Math.random() * 20) + "vh";
+
+
+        heart.style.fontSize =
+            (16 + Math.random() * 24) + "px";
+
+
+        heart.style.animationDuration =
+            (2 + Math.random() * 2) + "s";
+
+
+        heartContainer.appendChild(heart);
+
+
+        setTimeout(function() {
+
+            heart.remove();
+
+        }, 5000);
+
+    }
+
+}
+
+
+/* SWIPE SUPPORT */
+
+let startX = 0;
+
 
 document.addEventListener(
     "touchstart",
-    event => {
-        touchStartX = event.changedTouches[0].screenX;
+    function(event) {
+
+        startX =
+            event.touches[0].clientX;
+
     },
     { passive: true }
 );
 
+
 document.addEventListener(
     "touchend",
-    event => {
+    function(event) {
 
-        const touchEndX = event.changedTouches[0].screenX;
+        const endX =
+            event.changedTouches[0].clientX;
 
-        const difference = touchEndX - touchStartX;
+        const difference =
+            endX - startX;
 
-        if (Math.abs(difference) > 55) {
+
+        if (Math.abs(difference) > 60) {
 
             if (difference < 0) {
-                showSlide(current + 1);
+                nextSlide();
             } else {
-                showSlide(current - 1);
+                showSlide(currentSlide - 1);
             }
 
         }
@@ -75,136 +266,22 @@ document.addEventListener(
 
 /* KEYBOARD */
 
-document.addEventListener("keydown", event => {
+document.addEventListener(
+    "keydown",
+    function(event) {
 
-    if (event.key === "ArrowRight") {
-        showSlide(current + 1);
-    }
-
-    if (event.key === "ArrowLeft") {
-        showSlide(current - 1);
-    }
-
-});
-
-
-/* MUSIC */
-
-const music = document.getElementById("music");
-const musicBtn = document.getElementById("musicBtn");
-
-musicBtn.addEventListener("click", async () => {
-
-    try {
-
-        if (music.paused) {
-
-            await music.play();
-
-            musicBtn.textContent =
-                "⏸ Pause Birthday Music";
-
-        } else {
-
-            music.pause();
-
-            musicBtn.textContent =
-                "🎵 Play Birthday Music";
-
+        if (event.key === "ArrowRight") {
+            nextSlide();
         }
 
-    } catch (error) {
-
-        musicBtn.textContent =
-            "🎵 Tap Again — Music Not Started";
-
-    }
-
-});
-
-
-/* FLOATING HEARTS */
-
-const holder = document.getElementById("bgHearts");
-
-const symbols = [
-    "♡",
-    "♥",
-    "💗",
-    "💖",
-    "✦",
-    "✨"
-];
-
-
-function floatingHeart() {
-
-    const heart = document.createElement("span");
-
-    heart.className = "float-heart";
-
-    heart.textContent =
-        symbols[
-            Math.floor(
-                Math.random() * symbols.length
-            )
-        ];
-
-    heart.style.left =
-        Math.random() * 100 + "vw";
-
-    heart.style.fontSize =
-        14 + Math.random() * 20 + "px";
-
-    heart.style.animationDuration =
-        6 + Math.random() * 6 + "s";
-
-    holder.appendChild(heart);
-
-    setTimeout(() => {
-        heart.remove();
-    }, 13000);
-}
-
-
-setInterval(floatingHeart, 650);
-
-
-/* HEART BURST */
-
-function burst() {
-
-    for (let i = 0; i < 22; i++) {
-
-        const heart =
-            document.createElement("span");
-
-        heart.className = "float-heart";
-
-        heart.textContent =
-            ["♡", "♥", "💗", "✨"][
-                Math.floor(
-                    Math.random() * 4
-                )
-            ];
-
-        heart.style.left =
-            40 + Math.random() * 20 + "vw";
-
-        heart.style.bottom =
-            35 + Math.random() * 10 + "vh";
-
-        heart.style.fontSize =
-            16 + Math.random() * 22 + "px";
-
-        heart.style.animationDuration =
-            2 + Math.random() * 2 + "s";
-
-        holder.appendChild(heart);
-
-        setTimeout(() => {
-            heart.remove();
-        }, 5000);
-    }
-
+        if (event.key === "ArrowLeft") {
+            showSlide(currentSlide - 1);
         }
+
+    }
+);
+
+
+/* START */
+
+showSlide(0);
