@@ -1,73 +1,24 @@
-// 🎂 SHAMAMA MY CHURAIL — BIRTHDAY SURPRISE
+// 🎂 TEST VERSION
+// Birthday reveal appears immediately
 
-// 19 September 2026 — 12:00 AM Pakistan Time
-const birthdayTime = new Date().getTime() - 1000;
+const countdownScreen =
+    document.getElementById("countdown-screen");
 
-const countdownScreen = document.getElementById("countdown-screen");
-const birthdayScreen = document.getElementById("birthday-screen");
+const birthdayScreen =
+    document.getElementById("birthday-screen");
 
+const music =
+    document.getElementById("birthday-music");
 
-// ================================
-// COUNTDOWN
-// ================================
-
-function updateCountdown() {
-
-    const now = new Date().getTime();
-    const difference = birthdayTime - now;
-
-    // 🎉 Midnight reached
-    if (difference <= 0) {
-        showBirthday();
-        return;
-    }
-
-    const hours = Math.floor(
-        difference / (1000 * 60 * 60)
-    );
-
-    const minutes = Math.floor(
-        (difference % (1000 * 60 * 60)) /
-        (1000 * 60)
-    );
-
-    const seconds = Math.floor(
-        (difference % (1000 * 60)) /
-        1000
-    );
-
-    const hoursElement = document.getElementById("hours");
-    const minutesElement = document.getElementById("minutes");
-    const secondsElement = document.getElementById("seconds");
-
-    if (hoursElement) {
-        hoursElement.textContent =
-            String(hours).padStart(2, "0");
-    }
-
-    if (minutesElement) {
-        minutesElement.textContent =
-            String(minutes).padStart(2, "0");
-    }
-
-    if (secondsElement) {
-        secondsElement.textContent =
-            String(seconds).padStart(2, "0");
-    }
-}
+const musicButton =
+    document.getElementById("music-btn");
 
 
 // ================================
-// BIRTHDAY REVEAL
+// SHOW BIRTHDAY IMMEDIATELY
 // ================================
-
-let birthdayShown = false;
 
 function showBirthday() {
-
-    if (birthdayShown) return;
-
-    birthdayShown = true;
 
     if (countdownScreen) {
         countdownScreen.style.display = "none";
@@ -85,9 +36,6 @@ function showBirthday() {
 // ================================
 // MUSIC BUTTON
 // ================================
-
-const music = document.getElementById("birthday-music");
-const musicButton = document.getElementById("music-btn");
 
 if (musicButton && music) {
 
@@ -130,14 +78,18 @@ function createHearts() {
 
     for (let i = 0; i < 30; i++) {
 
-        const heart = document.createElement("div");
+        const heart =
+            document.createElement("div");
 
-        heart.className = "floating-heart";
+        heart.className =
+            "floating-heart";
 
         heart.textContent =
-            hearts[Math.floor(
-                Math.random() * hearts.length
-            )];
+            hearts[
+                Math.floor(
+                    Math.random() * hearts.length
+                )
+            ];
 
         heart.style.left =
             Math.random() * 100 + "vw";
@@ -158,9 +110,7 @@ function createHearts() {
 
 
 // ================================
-// START COUNTDOWN
+// START TEST
 // ================================
 
-updateCountdown();
-
-setInterval(updateCountdown, 1000);
+showBirthday();
