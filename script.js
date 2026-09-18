@@ -1,116 +1,210 @@
-// 🎂 TEST VERSION
-// Birthday reveal appears immediately
+const slides = [...document.querySelectorAll(".slide")];
+const dots = [...document.querySelectorAll(".dot")];
 
-const countdownScreen =
-    document.getElementById("countdown-screen");
+let current = 0;
 
-const birthdayScreen =
-    document.getElementById("birthday-screen");
+function showSlide(index) {
+    current = (index + slides.length) % slides.length;
 
-const music =
-    document.getElementById("birthday-music");
+    slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === current);
+    });
 
-const musicButton =
-    document.getElementById("music-btn");
+    dots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === current);
+    });
 
-
-// ================================
-// SHOW BIRTHDAY IMMEDIATELY
-// ================================
-
-function showBirthday() {
-
-    if (countdownScreen) {
-        countdownScreen.style.display = "none";
+    if (current === 2) {
+        burst();
     }
-
-    if (birthdayScreen) {
-        birthdayScreen.style.display = "flex";
-        birthdayScreen.classList.add("show");
-    }
-
-    createHearts();
 }
 
 
-// ================================
-// MUSIC BUTTON
-// ================================
+/* NEXT BUTTONS */
 
-if (musicButton && music) {
+document.querySelectorAll(".next").forEach(button => {
 
-    musicButton.addEventListener("click", function () {
+    button.addEventListener("click", () => {
+        showSlide(current + 1);
+    });
+
+});
+
+
+/* RESTART */
+
+document.querySelector(".restart").addEventListener("click", () => {
+    showSlide(0);
+});
+
+
+/* SWIPE ON MOBILE */
+
+let touchStartX = 0;
+
+document.addEventListener(
+    "touchstart",
+    event => {
+        touchStartX = event.changedTouches[0].screenX;
+    },
+    { passive: true }
+);
+
+document.addEventListener(
+    "touchend",
+    event => {
+
+        const touchEndX = event.changedTouches[0].screenX;
+
+        const difference = touchEndX - touchStartX;
+
+        if (Math.abs(difference) > 55) {
+
+            if (difference < 0) {
+                showSlide(current + 1);
+            } else {
+                showSlide(current - 1);
+            }
+
+        }
+
+    },
+    { passive: true }
+);
+
+
+/* KEYBOARD */
+
+document.addEventListener("keydown", event => {
+
+    if (event.key === "ArrowRight") {
+        showSlide(current + 1);
+    }
+
+    if (event.key === "ArrowLeft") {
+        showSlide(current - 1);
+    }
+
+});
+
+
+/* MUSIC */
+
+const music = document.getElementById("music");
+const musicBtn = document.getElementById("musicBtn");
+
+musicBtn.addEventListener("click", async () => {
+
+    try {
 
         if (music.paused) {
 
-            music.play();
+            await music.play();
 
-            musicButton.innerHTML =
-                "⏸️ Pause Birthday Music";
+            musicBtn.textContent =
+                "⏸ Pause Birthday Music";
 
         } else {
 
             music.pause();
 
-            musicButton.innerHTML =
+            musicBtn.textContent =
                 "🎵 Play Birthday Music";
+
         }
 
-    });
+    } catch (error) {
 
+        musicBtn.textContent =
+            "🎵 Tap Again — Music Not Started";
+
+    }
+
+});
+
+
+/* FLOATING HEARTS */
+
+const holder = document.getElementById("bgHearts");
+
+const symbols = [
+    "♡",
+    "♥",
+    "💗",
+    "💖",
+    "✦",
+    "✨"
+];
+
+
+function floatingHeart() {
+
+    const heart = document.createElement("span");
+
+    heart.className = "float-heart";
+
+    heart.textContent =
+        symbols[
+            Math.floor(
+                Math.random() * symbols.length
+            )
+        ];
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+    heart.style.fontSize =
+        14 + Math.random() * 20 + "px";
+
+    heart.style.animationDuration =
+        6 + Math.random() * 6 + "s";
+
+    holder.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 13000);
 }
 
 
-// ================================
-// FLOATING HEARTS
-// ================================
+setInterval(floatingHeart, 650);
 
-function createHearts() {
 
-    const hearts = [
-        "♡",
-        "♥",
-        "💕",
-        "💗",
-        "💖",
-        "✨"
-    ];
+/* HEART BURST */
 
-    for (let i = 0; i < 30; i++) {
+function burst() {
+
+    for (let i = 0; i < 22; i++) {
 
         const heart =
-            document.createElement("div");
+            document.createElement("span");
 
-        heart.className =
-            "floating-heart";
+        heart.className = "float-heart";
 
         heart.textContent =
-            hearts[
+            ["♡", "♥", "💗", "✨"][
                 Math.floor(
-                    Math.random() * hearts.length
+                    Math.random() * 4
                 )
             ];
 
         heart.style.left =
-            Math.random() * 100 + "vw";
+            40 + Math.random() * 20 + "vw";
 
-        heart.style.animationDelay =
-            Math.random() * 4 + "s";
+        heart.style.bottom =
+            35 + Math.random() * 10 + "vh";
+
+        heart.style.fontSize =
+            16 + Math.random() * 22 + "px";
 
         heart.style.animationDuration =
-            5 + Math.random() * 5 + "s";
+            2 + Math.random() * 2 + "s";
 
-        document.body.appendChild(heart);
+        holder.appendChild(heart);
 
-        setTimeout(function () {
+        setTimeout(() => {
             heart.remove();
-        }, 10000);
+        }, 5000);
     }
-}
 
-
-// ================================
-// START TEST
-// ================================
-
-showBirthday();
+        }
