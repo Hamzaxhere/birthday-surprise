@@ -1,165 +1,1043 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Happy Birthday Shamama ❤️</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="style.css">
+<title>For Shamama ♡</title>
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+}
+
+body{
+    overflow:hidden;
+    font-family:Georgia,serif;
+    background:#090612;
+    color:white;
+}
+
+
+/* =========================
+   BACKGROUND
+========================= */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+
+    background:
+    radial-gradient(
+        circle at 50% 30%,
+        rgba(180,40,180,.20),
+        transparent 38%
+    ),
+    radial-gradient(
+        circle at 15% 85%,
+        rgba(255,70,170,.13),
+        transparent 30%
+    ),
+    radial-gradient(
+        circle at 90% 15%,
+        rgba(80,60,255,.12),
+        transparent 30%
+    );
+
+    z-index:-2;
+}
+
+#particles{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:-1;
+}
+
+
+/* =========================
+   INTRO SCREEN
+========================= */
+
+#countdownScreen{
+    width:100%;
+    height:100vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+}
+
+.box{
+    width:min(680px,100%);
+
+    text-align:center;
+
+    padding:45px 25px;
+
+    border:1px solid rgba(255,150,225,.3);
+
+    border-radius:35px;
+
+    background:
+    rgba(20,8,30,.72);
+
+    backdrop-filter:blur(14px);
+
+    box-shadow:
+    0 0 70px rgba(220,40,180,.15),
+    inset 0 0 40px rgba(255,100,210,.03);
+}
+
+
+/* =========================
+   TOP
+========================= */
+
+.eyebrow{
+    color:#d9a7d5;
+
+    font-size:11px;
+
+    letter-spacing:4px;
+
+    margin-bottom:25px;
+}
+
+.logoHeart{
+    font-size:75px;
+
+    color:#ff8ed8;
+
+    text-shadow:
+    0 0 15px #ff3bb9,
+    0 0 50px #8d1b77;
+
+    animation:pulse 1.8s infinite;
+}
+
+h1{
+    margin-top:10px;
+
+    font-size:clamp(38px,10vw,70px);
+
+    font-weight:normal;
+
+    font-style:italic;
+
+    color:#ffd4ef;
+
+    text-shadow:
+    0 0 20px rgba(255,50,190,.7);
+}
+
+.name{
+    margin-top:8px;
+
+    font-size:clamp(25px,7vw,42px);
+
+    color:#ff91d6;
+}
+
+.subtitle{
+    margin-top:12px;
+
+    color:#bca9bd;
+
+    font-size:14px;
+
+    line-height:1.7;
+}
+
+
+/* =========================
+   COUNTDOWN
+========================= */
+
+.countdown{
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:10px;
+
+    margin:35px auto 10px;
+
+    max-width:540px;
+}
+
+.timeBox{
+    padding:18px 8px;
+
+    border-radius:20px;
+
+    border:1px solid
+    rgba(255,120,210,.25);
+
+    background:
+    linear-gradient(
+        145deg,
+        rgba(255,60,190,.10),
+        rgba(60,30,100,.16)
+    );
+}
+
+.number{
+    display:block;
+
+    font-size:clamp(25px,7vw,43px);
+
+    color:#ffe1f5;
+
+    text-shadow:
+    0 0 15px #ff40bc;
+}
+
+.label{
+    display:block;
+
+    margin-top:5px;
+
+    font-size:9px;
+
+    letter-spacing:2px;
+
+    color:#bfa9bd;
+}
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+.waiting{
+    margin-top:25px;
+
+    color:#d5bfd2;
+
+    font-size:13px;
+
+    line-height:1.8;
+}
+
+.date{
+    margin-top:12px;
+
+    color:#ff91d7;
+
+    font-size:12px;
+
+    letter-spacing:2px;
+}
+
+
+/* =========================
+   REVEAL
+========================= */
+
+#revealScreen{
+    display:none;
+
+    width:100%;
+    height:100vh;
+
+    overflow-y:auto;
+
+    padding:35px 18px 50px;
+
+    text-align:center;
+}
+
+#revealScreen.show{
+    display:block;
+
+    animation:reveal .9s ease;
+}
+
+.revealInner{
+    width:min(760px,100%);
+
+    margin:auto;
+}
+
+.badge{
+    display:inline-block;
+
+    padding:8px 18px;
+
+    border-radius:50px;
+
+    border:1px solid
+    rgba(255,130,215,.4);
+
+    color:#ff9bd9;
+
+    font-size:10px;
+
+    letter-spacing:3px;
+
+    background:rgba(255,50,180,.07);
+}
+
+.revealTitle{
+    margin-top:25px;
+
+    font-size:clamp(43px,12vw,85px);
+
+    font-weight:normal;
+
+    font-style:italic;
+
+    color:#ffd7ef;
+
+    text-shadow:
+    0 0 20px #ff3db9,
+    0 0 50px #8d1b78;
+}
+
+.revealName{
+    margin-top:5px;
+
+    font-size:clamp(30px,8vw,52px);
+
+    color:#ff8bd4;
+}
+
+
+/* =========================
+   WISH CARD
+========================= */
+
+.wishCard{
+    margin:30px auto;
+
+    padding:28px 22px;
+
+    border-radius:28px;
+
+    border:1px solid
+    rgba(255,140,220,.3);
+
+    background:
+    rgba(25,8,35,.72);
+
+    box-shadow:
+    0 0 45px rgba(255,40,180,.10);
+}
+
+.wishCard p{
+    margin:15px 0;
+
+    color:#e6d5e3;
+
+    font-size:15px;
+
+    line-height:1.85;
+}
+
+.divider{
+    color:#ff83d1;
+
+    letter-spacing:7px;
+
+    margin:20px 0;
+}
+
+
+/* =========================
+   PRAYERS
+========================= */
+
+.prayerTitle{
+    margin-top:35px;
+
+    color:#ffb1df;
+
+    font-size:28px;
+
+    font-weight:normal;
+}
+
+.prayers{
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:12px;
+
+    margin-top:18px;
+}
+
+.prayer{
+    min-height:120px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:18px;
+
+    border-radius:20px;
+
+    border:1px solid
+    rgba(255,130,215,.20);
+
+    background:
+    rgba(30,10,40,.65);
+
+    color:#ddcadb;
+
+    font-size:13px;
+
+    line-height:1.7;
+
+    transition:.3s;
+}
+
+.prayer:hover{
+    transform:translateY(-4px);
+
+    border-color:
+    rgba(255,130,215,.55);
+}
+
+
+/* =========================
+   CAKE
+========================= */
+
+.cake{
+    font-size:70px;
+
+    margin:28px 0 10px;
+
+    animation:cake 1.5s infinite;
+}
+
+.finalText{
+    color:#ffe0f2;
+
+    font-size:22px;
+
+    line-height:1.5;
+}
+
+.footer{
+    margin-top:20px;
+
+    color:#9f8a9e;
+
+    font-size:11px;
+
+    letter-spacing:1px;
+}
+
+
+/* =========================
+   PARTICLES
+========================= */
+
+.particle{
+    position:absolute;
+
+    bottom:-30px;
+
+    color:#ff78cd;
+
+    text-shadow:
+    0 0 12px #ff38b8;
+
+    animation:rise linear forwards;
+
+    opacity:.7;
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes pulse{
+
+    50%{
+        transform:scale(1.12);
+    }
+
+}
+
+@keyframes rise{
+
+    to{
+        transform:
+        translateY(-115vh)
+        rotate(360deg);
+
+        opacity:0;
+    }
+
+}
+
+@keyframes reveal{
+
+    from{
+        opacity:0;
+        transform:scale(.94)
+        translateY(25px);
+    }
+
+    to{
+        opacity:1;
+        transform:none;
+    }
+
+}
+
+@keyframes cake{
+
+    50%{
+        transform:
+        translateY(-8px)
+        rotate(-3deg);
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+    .box{
+        padding:35px 16px;
+    }
+
+    .countdown{
+        gap:7px;
+    }
+
+    .timeBox{
+        padding:15px 5px;
+    }
+
+    .label{
+        font-size:8px;
+        letter-spacing:1px;
+    }
+
+    .wishCard{
+        padding:22px 16px;
+    }
+
+    .wishCard p{
+        font-size:14px;
+    }
+
+    .prayers{
+        grid-template-columns:1fr 1fr;
+        gap:8px;
+    }
+
+    .prayer{
+        min-height:125px;
+        padding:12px 8px;
+        font-size:12px;
+    }
+
+}
+
+</style>
+
 </head>
+
 
 <body>
 
-    <div id="hearts"></div>
 
-    <div class="container">
+<!-- =========================
+     COUNTDOWN SCREEN
+========================= -->
 
-        <!-- SLIDE 1 -->
-        <section class="slide active">
+<section id="countdownScreen">
 
-            <div class="stars">✦ ✧ ✦</div>
+    <div class="box">
 
-            <p class="small-title">A LITTLE SURPRISE FOR YOU</p>
+        <div class="eyebrow">
+            ✦ A LITTLE SURPRISE ✦
+        </div>
 
-            <div class="big-heart">♡</div>
+        <div class="logoHeart">
+            ♡
+        </div>
 
-            <h1>Happy Birthday</h1>
+        <h1>
+            Something Special
+        </h1>
 
-            <h2>𝑺𝒉𝒂𝒎𝒂𝒎𝒂</h2>
+        <div class="name">
+            𝑺𝒉𝒂𝒎𝒂𝒎𝒂
+        </div>
 
-            <p class="nickname">My Churail ♡</p>
+        <p class="subtitle">
+            My Churail ♡
+            <br>
+            Your birthday surprise is waiting...
+        </p>
 
-            <div class="line">♡ ───── ✦ ───── ♡</div>
 
-            <p class="message">
+        <!-- COUNTDOWN -->
+
+        <div class="countdown">
+
+            <div class="timeBox">
+                <span id="days" class="number">00</span>
+                <span class="label">DAYS</span>
+            </div>
+
+            <div class="timeBox">
+                <span id="hours" class="number">00</span>
+                <span class="label">HOURS</span>
+            </div>
+
+            <div class="timeBox">
+                <span id="minutes" class="number">00</span>
+                <span class="label">MINUTES</span>
+            </div>
+
+            <div class="timeBox">
+                <span id="seconds" class="number">00</span>
+                <span class="label">SECONDS</span>
+            </div>
+
+        </div>
+
+
+        <p class="waiting">
+            The surprise will unlock exactly at
+            <br>
+            <strong>12:00 AM Pakistan Time</strong>
+        </p>
+
+        <div class="date">
+            ✦ 19 SEPTEMBER ✦
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     REVEAL SCREEN
+========================= -->
+
+<section id="revealScreen">
+
+    <div class="revealInner">
+
+        <div class="badge">
+            ✦ MIDNIGHT REVEAL ✦
+        </div>
+
+
+        <h1 class="revealTitle">
+            Happy Birthday
+        </h1>
+
+        <div class="revealName">
+            𝑺𝒉𝒂𝒎𝒂𝒎𝒂 ♡
+        </div>
+
+
+        <div class="wishCard">
+
+            <div class="divider">
+                ♡ ✦ ♡
+            </div>
+
+            <p>
                 Today is your special day,
-                so I made this little corner
-                just to make you smile. 🌸
+                and may it bring you countless
+                smiles, peaceful moments and
+                beautiful memories. 🌸
             </p>
 
-            <button onclick="nextSlide()">
-                Open Your Surprise ✨
-            </button>
-
-        </section>
-
-
-        <!-- SLIDE 2 -->
-        <section class="slide">
-
-            <div class="moon">🌙</div>
-
-            <p class="small-title">A FEW WORDS FOR YOU</p>
-
-            <h1 class="special">For Someone Special</h1>
-
-            <div class="card">
-
-                <p>
-                    Shamama, may your birthday bring
-                    countless smiles, peaceful moments
-                    and beautiful memories. 💗
-                </p>
-
-                <p>
-                    May every new day give you another
-                    reason to smile, dream and shine. ✨
-                </p>
-
-                <p>
-                    May your life always be surrounded
-                    by happiness, kindness and people
-                    who genuinely care about you. 🌷
-                </p>
-
-                <p>
-                    Today is your day, so enjoy every
-                    little moment and keep that beautiful
-                    smile alive. 🦋
-                </p>
-
-            </div>
-
-            <div class="flowers">
-                🌹 ✨ 🦋 ✨ 🌹
-            </div>
-
-            <button onclick="nextSlide()">
-                One More Surprise 💌
-            </button>
-
-        </section>
-
-
-        <!-- SLIDE 3 -->
-        <section class="slide">
-
-            <div class="star">✦</div>
-
-            <p class="small-title">A BIRTHDAY PRAYER 🤲</p>
-
-            <h1 class="special">My Prayers For You</h1>
-
-            <div class="prayers">
-
-                <div>🤲 May Allah bless you with endless happiness and peace.</div>
-
-                <div>🌸 May every sincere dua of yours be accepted.</div>
-
-                <div>✨ May Allah protect you and guide you always.</div>
-
-                <div>🌷 May this new year of your life be full of beautiful memories.</div>
-
-                <div>🕊️ May your heart always have hope, peace and reasons to smile.</div>
-
-                <div>💗 May Allah keep happiness and goodness around you.</div>
-
-            </div>
-
-            <div class="cake">🎂</div>
-
-            <h2 class="final">
-                Happy Birthday, My Churail! 🥹❤️
-            </h2>
-
-            <p class="ending">
-                May your coming days be brighter,
-                happier and more beautiful. ✨
+            <p>
+                May every new chapter of your life
+                bring new reasons to smile,
+                new dreams to follow and
+                beautiful moments to remember. ✨
             </p>
 
-            <button onclick="playMusic()" id="musicButton">
-                🎵 Play Birthday Music
-            </button>
+            <p>
+                Keep shining, keep smiling,
+                and never stop believing in
+                the beautiful things waiting
+                ahead. 🦋
+            </p>
 
-            <button class="restart" onclick="goHome()">
-                ↻ Read Again
-            </button>
+            <div class="divider">
+                ♡ ── ✦ ── ♡
+            </div>
 
-        </section>
+        </div>
+
+
+        <h2 class="prayerTitle">
+            🤲 Birthday Duas
+        </h2>
+
+
+        <div class="prayers">
+
+            <div class="prayer">
+                🤲 May Allah bless you with
+                happiness, peace and goodness.
+            </div>
+
+            <div class="prayer">
+                🌸 May every sincere dua
+                of yours be accepted.
+            </div>
+
+            <div class="prayer">
+                ✨ May Allah protect you
+                and guide you always.
+            </div>
+
+            <div class="prayer">
+                🌷 May your coming year
+                be full of beautiful memories.
+            </div>
+
+            <div class="prayer">
+                🕊️ May your heart always
+                have hope and peace.
+            </div>
+
+            <div class="prayer">
+                💗 May happiness find you
+                in the smallest moments.
+            </div>
+
+        </div>
+
+
+        <div class="cake">
+            🎂
+        </div>
+
+        <div class="finalText">
+            Happy Birthday,
+            <br>
+            My Churail! 🥹❤️
+        </div>
+
+        <div class="footer">
+            Made with lots of birthday wishes ✦
+        </div>
 
     </div>
 
-
-    <!-- SLIDE INDICATORS -->
-
-    <div class="dots">
-
-        <span id="dot1" class="dot active"></span>
-        <span id="dot2" class="dot"></span>
-        <span id="dot3" class="dot"></span>
-
-    </div>
+</section>
 
 
-    <!-- MUSIC -->
+<!-- PARTICLES -->
 
-    <audio id="birthdayMusic" loop>
-        <source src="birthday.mp3" type="audio/mpeg">
-    </audio>
+<div id="particles"></div>
 
 
-    <script src="script.js"></script>
+<script>
+
+/* =====================================================
+   EXACT TARGET:
+   19 SEPTEMBER 2026
+   12:00 AM PAKISTAN TIME
+
+   Pakistan = UTC +05:00
+   Therefore:
+   2026-09-18 19:00:00 UTC
+===================================================== */
+
+const targetTime =
+    new Date("2026-09-18T19:00:00Z").getTime();
+
+
+/* ELEMENTS */
+
+const countdownScreen =
+    document.getElementById("countdownScreen");
+
+const revealScreen =
+    document.getElementById("revealScreen");
+
+
+const days =
+    document.getElementById("days");
+
+const hours =
+    document.getElementById("hours");
+
+const minutes =
+    document.getElementById("minutes");
+
+const seconds =
+    document.getElementById("seconds");
+
+
+/* FORMAT */
+
+function twoDigit(number){
+
+    return String(number).padStart(2,"0");
+
+}
+
+
+/* =====================================================
+   COUNTDOWN
+===================================================== */
+
+function updateCountdown(){
+
+    const now =
+        Date.now();
+
+    let difference =
+        targetTime - now;
+
+
+    /* MIDNIGHT REACHED */
+
+    if(difference <= 0){
+
+        revealScreen.classList.add("show");
+
+        countdownScreen.style.display = "none";
+
+        clearInterval(countdownInterval);
+
+        createRevealParticles();
+
+        return;
+
+    }
+
+
+    const totalSeconds =
+        Math.floor(difference / 1000);
+
+
+    const d =
+        Math.floor(
+            totalSeconds / 86400
+        );
+
+
+    const h =
+        Math.floor(
+            (totalSeconds % 86400) / 3600
+        );
+
+
+    const m =
+        Math.floor(
+            (totalSeconds % 3600) / 60
+        );
+
+
+    const s =
+        totalSeconds % 60;
+
+
+    days.textContent =
+        twoDigit(d);
+
+    hours.textContent =
+        twoDigit(h);
+
+    minutes.textContent =
+        twoDigit(m);
+
+    seconds.textContent =
+        twoDigit(s);
+
+}
+
+
+/* RUN IMMEDIATELY */
+
+updateCountdown();
+
+
+/* UPDATE EVERY SECOND */
+
+const countdownInterval =
+    setInterval(
+        updateCountdown,
+        1000
+    );
+
+
+/* =====================================================
+   FLOATING PARTICLES
+===================================================== */
+
+const particleContainer =
+    document.getElementById("particles");
+
+
+const symbols = [
+    "♡",
+    "♥",
+    "✦",
+    "✧",
+    "✨",
+    "·"
+];
+
+
+function createParticle(){
+
+    const particle =
+        document.createElement("span");
+
+
+    particle.className =
+        "particle";
+
+
+    particle.textContent =
+        symbols[
+            Math.floor(
+                Math.random() *
+                symbols.length
+            )
+        ];
+
+
+    particle.style.left =
+        Math.random() * 100 + "vw";
+
+
+    particle.style.fontSize =
+        (10 + Math.random() * 22) + "px";
+
+
+    particle.style.animationDuration =
+        (5 + Math.random() * 7) + "s";
+
+
+    particleContainer.appendChild(
+        particle
+    );
+
+
+    setTimeout(
+        function(){
+
+            particle.remove();
+
+        },
+        13000
+    );
+
+}
+
+
+setInterval(
+    createParticle,
+    500
+);
+
+
+/* =====================================================
+   REVEAL PARTICLE BURST
+===================================================== */
+
+function createRevealParticles(){
+
+    for(
+        let i = 0;
+        i < 70;
+        i++
+    ){
+
+        const particle =
+            document.createElement("span");
+
+
+        particle.className =
+            "particle";
+
+
+        particle.textContent =
+            symbols[
+                Math.floor(
+                    Math.random() *
+                    symbols.length
+                )
+            ];
+
+
+        particle.style.left =
+            (30 + Math.random() * 40) + "vw";
+
+
+        particle.style.bottom =
+            (20 + Math.random() * 20) + "vh";
+
+
+        particle.style.fontSize =
+            (12 + Math.random() * 25) + "px";
+
+
+        particle.style.animationDuration =
+            (2 + Math.random() * 3) + "s";
+
+
+        particleContainer.appendChild(
+            particle
+        );
+
+
+        setTimeout(
+            function(){
+
+                particle.remove();
+
+            },
+            6000
+        );
+
+    }
+
+}
+
+</script>
+
 
 </body>
-                </html>
+    </html>
