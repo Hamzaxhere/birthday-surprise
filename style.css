@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -11,335 +13,288 @@ html {
 body {
     min-height: 100vh;
     background:
-        radial-gradient(circle at 50% 30%, rgba(180, 70, 255, 0.18), transparent 35%),
-        radial-gradient(circle at 20% 80%, rgba(255, 40, 150, 0.12), transparent 30%),
-        #07030d;
+        radial-gradient(circle at 50% 20%, rgba(190, 65, 180, 0.18), transparent 35%),
+        radial-gradient(circle at 20% 80%, rgba(255, 75, 170, 0.10), transparent 30%),
+        #08030d;
     color: #fff;
     font-family: "Cormorant Garamond", serif;
     overflow-x: hidden;
 }
 
-/* ---------- Screens ---------- */
-
-.screen {
-    min-height: 100vh;
+/* Main container */
+.container {
     width: 100%;
-    position: relative;
+    min-height: 100vh;
+    padding: 35px 18px 50px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     text-align: center;
-    padding: 30px 20px;
-    overflow: hidden;
 }
 
-/* ---------- Countdown ---------- */
-
-.countdown-screen {
-    transition: opacity 1.5s ease, visibility 1.5s ease;
+.content {
+    width: 100%;
+    max-width: 850px;
+    position: relative;
+    z-index: 2;
 }
 
-.countdown-screen.hidden {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    position: absolute;
+/* Small heading */
+.subtitle {
+    font-size: 20px;
+    letter-spacing: 4px;
+    color: #e8cce8;
+    margin-bottom: 22px;
+    animation: fadeIn 2s ease;
 }
 
-.small-title {
-    font-size: 18px;
-    letter-spacing: 3px;
-    color: #e9cfff;
-    margin-bottom: 20px;
-    animation: fadeDown 2s ease;
-}
-
-.name {
-    font-family: "Great Vibes", cursive;
-    font-size: clamp(55px, 15vw, 100px);
-    font-weight: 400;
+/* Name */
+h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(55px, 12vw, 105px);
+    font-style: italic;
     line-height: 1;
-    background: linear-gradient(90deg, #ff8bdc, #ffffff, #c88cff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 35px rgba(255, 100, 210, 0.35);
-    animation: heartbeat 3s infinite;
+    color: #ff8edb;
+    text-shadow:
+        0 0 10px rgba(255, 92, 204, 0.7),
+        0 0 35px rgba(196, 45, 180, 0.45);
+    margin-bottom: 12px;
 }
 
+/* Nickname */
 .nickname {
-    font-family: "Great Vibes", cursive;
-    font-size: clamp(32px, 9vw, 55px);
-    color: #ffb4e8;
-    margin-top: 8px;
-}
-
-.heart-line {
-    color: #ff6fca;
-    font-size: 22px;
-    margin: 28px 0;
-    letter-spacing: 5px;
-}
-
-.waiting {
-    max-width: 500px;
-    color: #d7c7df;
-    font-size: 19px;
+    font-family: "Playfair Display", serif;
+    font-size: clamp(28px, 6vw, 48px);
+    font-style: italic;
+    color: #f5b7ed;
     margin-bottom: 35px;
 }
 
+/* Decorative line */
+.divider {
+    width: 80%;
+    max-width: 500px;
+    height: 1px;
+    margin: 20px auto 30px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #ff70d1,
+        #ffffff,
+        #ff70d1,
+        transparent
+    );
+    box-shadow: 0 0 12px rgba(255, 100, 210, 0.6);
+}
+
+/* Countdown */
 .countdown {
     display: flex;
-    align-items: center;
     justify-content: center;
-    gap: 10px;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 30px auto;
 }
 
 .time-box {
-    width: 90px;
-    height: 100px;
-    border: 1px solid rgba(255, 150, 230, 0.35);
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.045);
-    backdrop-filter: blur(10px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    min-width: 110px;
+    padding: 20px 15px;
+    border: 1px solid rgba(255, 137, 222, 0.4);
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.035);
     box-shadow:
-        0 0 20px rgba(220, 70, 255, 0.12),
-        inset 0 0 20px rgba(255, 100, 220, 0.04);
+        inset 0 0 20px rgba(255, 78, 203, 0.04),
+        0 0 25px rgba(175, 49, 157, 0.10);
+    backdrop-filter: blur(8px);
 }
 
 .time-box span {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 40px;
-    font-weight: 700;
-    color: #fff;
+    display: block;
 }
 
-.time-box small {
-    font-family: Arial, sans-serif;
-    font-size: 9px;
-    letter-spacing: 2px;
-    color: #eab7df;
+.time-number {
+    font-family: "Playfair Display", serif;
+    font-size: 48px;
+    color: #fff;
+    text-shadow: 0 0 15px rgba(255, 121, 220, 0.7);
+}
+
+.time-label {
+    margin-top: 5px;
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: #d8b6d8;
 }
 
 .colon {
-    font-size: 35px;
-    color: #ff8bdc;
-    margin-top: -15px;
-}
-
-.date-text {
-    margin-top: 35px;
-    font-family: Arial, sans-serif;
-    font-size: 12px;
-    letter-spacing: 5px;
-    color: #a98fae;
-}
-
-.bottom-text {
-    position: absolute;
-    bottom: 25px;
-    font-size: 15px;
-    color: #8e748f;
-}
-
-/* ---------- Birthday screen ---------- */
-
-.birthday-screen {
-    display: none;
-    min-height: 100vh;
-    opacity: 0;
-}
-
-.birthday-screen.show {
-    display: flex;
-    animation: reveal 2s ease forwards;
-}
-
-.reveal-text {
-    font-family: Arial, sans-serif;
-    font-size: 11px;
-    letter-spacing: 5px;
-    color: #ff9fe1;
-    margin-bottom: 15px;
-}
-
-.cake {
-    font-size: 70px;
-    margin-bottom: 10px;
-    animation: float 3s ease-in-out infinite;
-}
-
-.birthday-title {
-    font-size: clamp(48px, 13vw, 85px);
-    font-weight: 500;
-    background: linear-gradient(90deg, #ff82d5, #fff, #d391ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.birthday-name {
-    font-family: "Great Vibes", cursive;
-    font-size: clamp(60px, 16vw, 105px);
-    font-weight: 400;
-    color: #ffb5e9;
-    text-shadow: 0 0 30px rgba(255, 80, 200, 0.45);
-}
-
-.birthday-nickname {
-    font-family: "Great Vibes", cursive;
     font-size: 38px;
-    color: #dca7ff;
+    color: #ff76d4;
+    text-shadow: 0 0 15px #ff50c7;
 }
 
-.divider {
-    margin: 25px 0;
-    color: #ff79d1;
+/* Date */
+.date {
+    margin-top: 28px;
+    font-size: 21px;
+    letter-spacing: 9px;
+    color: #d9bdd8;
+}
+
+/* Secret message */
+.secret {
+    margin: 35px auto 0;
+    max-width: 600px;
     font-size: 22px;
-    letter-spacing: 12px;
-}
-
-.message-card {
-    width: min(700px, 100%);
-    padding: 30px 25px;
-    border: 1px solid rgba(255, 150, 230, 0.25);
-    border-radius: 25px;
-    background: rgba(255, 255, 255, 0.045);
-    backdrop-filter: blur(12px);
-    box-shadow: 0 0 40px rgba(170, 60, 255, 0.1);
-}
-
-.message-card p {
-    font-size: 20px;
     line-height: 1.7;
+    color: #d9c9d8;
+}
+
+/* Reveal section */
+#reveal {
+    display: none;
+    width: 100%;
+    min-height: 100vh;
+    padding: 70px 20px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background:
+        radial-gradient(circle at center, rgba(255, 55, 185, 0.18), transparent 45%),
+        #08030d;
+}
+
+#reveal.show {
+    display: flex;
+}
+
+.reveal-content {
+    max-width: 850px;
+    animation: revealUp 1.5s ease;
+}
+
+.reveal-title {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(48px, 10vw, 90px);
+    font-style: italic;
+    color: #ff91dc;
+    text-shadow:
+        0 0 15px #ff55c8,
+        0 0 40px rgba(255, 60, 190, 0.5);
+    margin-bottom: 25px;
+}
+
+.message {
+    font-size: clamp(20px, 4vw, 27px);
+    line-height: 1.8;
     color: #eadbea;
-    margin-bottom: 20px;
 }
 
-.message-card p:last-child {
-    margin-bottom: 0;
+.message br {
+    line-height: 2;
 }
 
-.final-message {
-    color: #ffcaed !important;
+/* Forever text */
+.forever {
+    margin: 35px 0;
+    font-family: "Playfair Display", serif;
+    font-size: 25px;
+    font-style: italic;
+    color: #ff9be1;
+    text-shadow: 0 0 15px rgba(255, 70, 195, 0.7);
 }
 
-.love-note {
+/* Ending */
+.ending {
     margin-top: 30px;
-    font-family: "Great Vibes", cursive;
-    font-size: 30px;
-    color: #ff9ddd;
+    font-family: "Playfair Display", serif;
+    font-size: 28px;
+    font-style: italic;
+    color: #fff;
 }
 
-.love-note span {
-    margin: 0 10px;
+/* Footer */
+.footer {
+    margin-top: 45px;
+    font-size: 16px;
+    letter-spacing: 2px;
+    color: #8e718c;
 }
 
-/* ---------- Floating hearts ---------- */
-
+/* Floating hearts */
 .hearts {
     position: fixed;
     inset: 0;
     pointer-events: none;
     overflow: hidden;
-    z-index: 10;
+    z-index: 1;
 }
 
 .hearts span {
     position: absolute;
     bottom: -50px;
-    color: rgba(255, 120, 210, 0.5);
-    font-size: 20px;
-    animation: rise 10s linear infinite;
+    color: #ff68d0;
+    font-size: 22px;
+    opacity: 0.55;
+    animation: floatHeart linear infinite;
+    text-shadow: 0 0 12px rgba(255, 70, 200, 0.8);
 }
 
 .hearts span:nth-child(1) {
-    left: 8%;
+    left: 10%;
+    animation-duration: 9s;
     animation-delay: 0s;
 }
 
 .hearts span:nth-child(2) {
-    left: 20%;
+    left: 28%;
+    animation-duration: 12s;
     animation-delay: 2s;
-    font-size: 14px;
 }
 
 .hearts span:nth-child(3) {
-    left: 35%;
+    left: 48%;
+    animation-duration: 10s;
     animation-delay: 4s;
 }
 
 .hearts span:nth-child(4) {
-    left: 50%;
+    left: 70%;
+    animation-duration: 13s;
     animation-delay: 1s;
-    font-size: 16px;
 }
 
 .hearts span:nth-child(5) {
-    left: 65%;
-    animation-delay: 5s;
-}
-
-.hearts span:nth-child(6) {
-    left: 75%;
-    animation-delay: 3s;
-    font-size: 15px;
-}
-
-.hearts span:nth-child(7) {
     left: 88%;
-    animation-delay: 6s;
+    animation-duration: 11s;
+    animation-delay: 3s;
 }
 
-.hearts span:nth-child(8) {
-    left: 95%;
-    animation-delay: 1.5s;
-}
-
-/* ---------- Animations ---------- */
-
-@keyframes rise {
+/* Animations */
+@keyframes floatHeart {
     0% {
-        transform: translateY(0) scale(0.8) rotate(0deg);
+        transform: translateY(0) scale(0.7) rotate(0deg);
         opacity: 0;
     }
 
-    20% {
-        opacity: 1;
+    15% {
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: translateY(-50vh) scale(1) rotate(15deg);
     }
 
     100% {
-        transform: translateY(-110vh) scale(1.5) rotate(25deg);
+        transform: translateY(-115vh) scale(1.3) rotate(-15deg);
         opacity: 0;
     }
 }
 
-@keyframes heartbeat {
-    0%, 100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.03);
-    }
-}
-
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-12px);
-    }
-}
-
-@keyframes fadeDown {
+@keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(-20px);
+        transform: translateY(15px);
     }
 
     to {
@@ -348,59 +303,71 @@ body {
     }
 }
 
-@keyframes reveal {
+@keyframes revealUp {
     from {
         opacity: 0;
-        transform: scale(0.96);
+        transform: translateY(50px) scale(0.95);
     }
 
     to {
         opacity: 1;
-        transform: scale(1);
+        transform: translateY(0) scale(1);
     }
 }
 
-/* ---------- Mobile ---------- */
+/* Mobile */
+@media (max-width: 600px) {
 
-@media (max-width: 500px) {
+    .container {
+        padding: 25px 14px 40px;
+    }
 
-    .small-title {
-        font-size: 14px;
+    .subtitle {
+        font-size: 15px;
         letter-spacing: 2px;
     }
 
-    .waiting {
-        font-size: 17px;
-        padding: 0 10px;
+    .nickname {
+        margin-bottom: 25px;
     }
 
     .countdown {
-        gap: 5px;
+        gap: 7px;
     }
 
     .time-box {
-        width: 78px;
-        height: 88px;
+        min-width: 88px;
+        padding: 15px 8px;
+        border-radius: 18px;
     }
 
-    .time-box span {
-        font-size: 34px;
+    .time-number {
+        font-size: 36px;
+    }
+
+    .time-label {
+        font-size: 10px;
+        letter-spacing: 2px;
     }
 
     .colon {
-        font-size: 28px;
+        font-size: 25px;
     }
 
-    .message-card {
-        padding: 24px 18px;
+    .date {
+        font-size: 17px;
+        letter-spacing: 5px;
     }
 
-    .message-card p {
-        font-size: 18px;
-        line-height: 1.6;
+    .secret {
+        font-size: 19px;
     }
 
-    .birthday-nickname {
-        font-size: 32px;
+    .message {
+        font-size: 20px;
     }
-  }
+
+    .forever {
+        font-size: 22px;
+    }
+    }
