@@ -7,16 +7,16 @@
 html,
 body {
     width: 100%;
-    min-height: 100%;
-    font-family: Georgia, "Times New Roman", serif;
+    height: 100%;
 }
 
 body {
-    min-height: 100vh;
-    background: #07040d;
-    color: #fff;
+    background: #08030d;
+    color: white;
+    font-family: Georgia, "Times New Roman", serif;
     overflow: hidden;
 }
+
 
 /* BACKGROUND */
 
@@ -24,362 +24,360 @@ body::before {
     content: "";
     position: fixed;
     inset: 0;
+
     background:
         radial-gradient(
-            circle at 50% 25%,
-            #351044 0,
-            transparent 38%
+            circle at 50% 20%,
+            #3d1048,
+            transparent 40%
         ),
+
         radial-gradient(
             circle at 20% 80%,
-            rgba(255, 45, 180, .12),
+            rgba(255, 40, 180, .15),
             transparent 30%
         ),
+
         radial-gradient(
             circle at 90% 70%,
-            rgba(110, 35, 160, .14),
-            transparent 28%
+            rgba(130, 40, 190, .15),
+            transparent 30%
         );
+
     pointer-events: none;
 }
 
-.bg-hearts {
+
+/* FLOATING HEARTS */
+
+#hearts {
     position: fixed;
     inset: 0;
     overflow: hidden;
     pointer-events: none;
-    z-index: 0;
+    z-index: 1;
 }
 
-.float-heart {
+.heart {
     position: absolute;
-    bottom: -50px;
-    color: #ff73cd;
-    text-shadow: 0 0 15px #ff32bb;
-    animation: up linear forwards;
-    opacity: .75;
+    bottom: -40px;
+
+    color: #ff71cb;
+
+    text-shadow:
+        0 0 10px #ff35b8,
+        0 0 25px #ff35b8;
+
+    animation: floatUp linear forwards;
 }
 
-/* SLIDES */
 
-.book {
+/* MAIN */
+
+.container {
     position: relative;
     z-index: 2;
+
     width: 100%;
     height: 100vh;
 }
 
+
+/* SLIDES */
+
 .slide {
     position: absolute;
+
     inset: 0;
+
+    width: 100%;
+    height: 100%;
 
     display: none;
 
-    min-height: 100vh;
-
-    padding: 45px 20px 80px;
-
-    align-items: center;
-    justify-content: center;
-
     flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
 
     text-align: center;
 
-    overflow-y: auto;
+    padding: 25px 18px 70px;
 
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(255, 52, 182, .07),
-            transparent 48%
-        );
+    overflow-y: auto;
 }
 
 .slide.active {
     display: flex;
-    animation: show .7s ease;
+
+    animation: fadeIn .7s ease;
 }
+
 
 /* TEXT */
 
-.sparkles {
-    color: #ff9cdd;
-    font-size: 25px;
+.stars {
+    color: #ff9bdd;
+
+    font-size: 26px;
+
     letter-spacing: 12px;
-    margin-bottom: 22px;
-    animation: glow 2s infinite;
-}
-
-.mini {
-    font-size: 11px;
-    letter-spacing: 3px;
-    color: #e8a9d5;
-    margin-bottom: 20px;
-}
-
-.heart {
-    font-size: 100px;
-    line-height: 1;
-
-    color: #ff78d0;
-
-    text-shadow:
-        0 0 12px #ff36b9,
-        0 0 45px #a51c82;
-
-    animation: beat 1.4s infinite;
-}
-
-h1 {
-    font-size: clamp(45px, 12vw, 82px);
-
-    font-weight: 400;
-    font-style: italic;
-
-    color: #ffabdf;
-
-    text-shadow:
-        0 0 12px #ff48bd,
-        0 0 35px #8d1d75;
-
-    line-height: 1.05;
-}
-
-h2 {
-    font-size: clamp(30px, 8vw, 48px);
-
-    font-weight: 400;
-
-    color: #ffe0f2;
-
-    margin-top: 10px;
-}
-
-.nickname {
-    font-size: 24px;
-    color: #ff82d2;
-
-    margin-top: 8px;
-
-    font-style: italic;
-}
-
-.line {
-    color: #ff76d0;
-
-    font-size: 20px;
-
-    margin: 22px 0;
-
-    text-shadow:
-        0 0 14px #ff31b7;
-}
-
-.text {
-    max-width: 520px;
-
-    color: #d9c2d7;
-
-    line-height: 1.8;
-
-    font-size: 16px;
-}
-
-/* BUTTONS */
-
-.next,
-.music,
-.restart {
-    margin-top: 28px;
-
-    border: 1px solid rgba(255, 129, 216, .75);
-
-    border-radius: 50px;
-
-    padding: 13px 24px;
-
-    background: rgba(255, 48, 180, .12);
-
-    color: #ffe7f7;
-
-    font: inherit;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 0 20px rgba(255, 45, 180, .25);
-
-    transition: .25s;
-}
-
-.next:hover,
-.music:hover,
-.restart:hover {
-    transform: translateY(-2px);
-
-    background: rgba(255, 48, 180, .23);
-
-    box-shadow:
-        0 0 30px rgba(255, 45, 180, .45);
-}
-
-/* SLIDE 2 */
-
-.moon {
-    font-size: 60px;
 
     margin-bottom: 18px;
 
-    filter:
-        drop-shadow(
-            0 0 18px #ffb3e6
-        );
+    animation: glow 2s infinite;
 }
 
-.script {
-    font-size: clamp(37px, 10vw, 65px);
+.small-title {
+    color: #e9abd7;
 
-    margin-bottom: 22px;
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 15px;
 }
 
-.letter {
-    width: min(650px, 100%);
+.big-heart {
+    font-size: 90px;
 
-    padding: 25px 22px;
-
-    border: 1px solid
-        rgba(255, 130, 218, .35);
-
-    border-radius: 24px;
-
-    background:
-        rgba(22, 6, 30, .75);
-
-    box-shadow:
-        inset 0 0 30px
-        rgba(255, 40, 180, .04),
-
-        0 0 30px
-        rgba(255, 40, 180, .12);
-}
-
-.letter p {
-    color: #ead5e4;
-
-    font-size: 15px;
-
-    line-height: 1.8;
-
-    margin: 13px 0;
-}
-
-.decor {
-    font-size: 25px;
-
-    margin: 20px 0;
-
-    letter-spacing: 8px;
-}
-
-/* SLIDE 3 */
-
-.glow-star {
-    font-size: 60px;
-
-    color: #ff8bd6;
+    color: #ff7bd2;
 
     text-shadow:
-        0 0 25px #ff39bc;
+        0 0 15px #ff39b8,
+        0 0 45px #a51b7c;
 
-    animation:
-        spin 5s linear infinite;
-
-    margin-bottom: 10px;
+    animation: heartbeat 1.3s infinite;
 }
 
-.prayer {
-    width: min(680px, 100%);
+h1 {
+    font-size: clamp(42px, 11vw, 80px);
 
-    display: grid;
+    font-weight: normal;
 
-    grid-template-columns:
-        1fr 1fr;
+    font-style: italic;
 
-    gap: 12px;
+    color: #ffb0e2;
+
+    text-shadow:
+        0 0 15px #ff42bd,
+        0 0 35px #9c207e;
+
+    line-height: 1.1;
+}
+
+h2 {
+    font-size: clamp(28px, 8vw, 48px);
+
+    font-weight: normal;
+
+    color: #ffe1f3;
+
+    margin-top: 8px;
+}
+
+.nickname {
+    color: #ff83d2;
+
+    font-size: 23px;
+
+    font-style: italic;
 
     margin-top: 5px;
 }
 
-.prayer p {
-    min-height: 110px;
+.line {
+    margin: 20px 0;
 
-    display: flex;
+    color: #ff72ce;
 
-    align-items: center;
-    justify-content: center;
+    font-size: 20px;
 
-    padding: 18px 12px;
+    text-shadow:
+        0 0 15px #ff30b7;
+}
 
-    border:
-        1px solid
-        rgba(255, 120, 208, .3);
+.message {
+    max-width: 500px;
 
-    border-radius: 18px;
+    color: #dbc5d8;
 
-    background:
-        rgba(27, 7, 36, .72);
+    font-size: 16px;
 
-    color: #e8d1e2;
+    line-height: 1.8;
+}
+
+
+/* BUTTON */
+
+button {
+    margin-top: 25px;
+
+    padding: 13px 25px;
+
+    border-radius: 50px;
+
+    border: 1px solid #ff83d7;
+
+    background: rgba(255, 40, 180, .12);
+
+    color: #ffeafa;
+
+    font-family: inherit;
 
     font-size: 14px;
 
-    line-height: 1.6;
+    cursor: pointer;
 
     box-shadow:
-        0 0 18px
-        rgba(255, 40, 180, .08);
+        0 0 20px rgba(255, 40, 180, .25);
 
-    animation:
-        card 3s ease-in-out infinite;
+    transition: .25s;
 }
 
-.prayer p:nth-child(even) {
+button:hover {
+    transform: translateY(-3px);
+
+    background: rgba(255, 40, 180, .25);
+
+    box-shadow:
+        0 0 30px rgba(255, 40, 180, .5);
+}
+
+
+/* SLIDE 2 */
+
+.moon {
+    font-size: 58px;
+
+    margin-bottom: 10px;
+
+    filter:
+        drop-shadow(0 0 18px #ff9bdd);
+}
+
+.special {
+    font-size: clamp(35px, 9vw, 62px);
+
+    margin-bottom: 20px;
+}
+
+.card {
+    width: min(650px, 100%);
+
+    padding: 20px;
+
+    border-radius: 25px;
+
+    border: 1px solid rgba(255, 120, 210, .35);
+
+    background: rgba(25, 6, 35, .75);
+
+    box-shadow:
+        0 0 30px rgba(255, 40, 180, .12);
+}
+
+.card p {
+    color: #ead5e5;
+
+    font-size: 14px;
+
+    line-height: 1.75;
+
+    margin: 12px 0;
+}
+
+.flowers {
+    font-size: 24px;
+
+    letter-spacing: 7px;
+
+    margin: 15px 0;
+}
+
+
+/* SLIDE 3 */
+
+.star {
+    font-size: 60px;
+
+    color: #ff8ed8;
+
+    text-shadow:
+        0 0 25px #ff32b7;
+
+    animation: rotate 5s linear infinite;
+}
+
+.prayers {
+    width: min(680px, 100%);
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 10px;
+}
+
+.prayers div {
+    min-height: 95px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 15px;
+
+    border-radius: 18px;
+
+    border: 1px solid rgba(255, 120, 210, .3);
+
+    background: rgba(28, 7, 38, .75);
+
+    color: #e8d3e3;
+
+    font-size: 13px;
+
+    line-height: 1.55;
+
+    box-shadow:
+        0 0 15px rgba(255, 40, 180, .08);
+
+    animation: cardFloat 3s ease-in-out infinite;
+}
+
+.prayers div:nth-child(even) {
     animation-delay: .5s;
 }
 
 .cake {
-    font-size: 65px;
+    font-size: 60px;
 
-    margin: 18px 0 10px;
+    margin: 15px 0 8px;
 
-    animation:
-        cake 1.5s infinite;
+    animation: cakeBounce 1.4s infinite;
 }
 
 .final {
-    font-size: clamp(22px, 6vw, 34px);
+    font-size: clamp(21px, 6vw, 34px);
 
-    color: #ffe4f4;
+    color: #ffe5f4;
 
     text-shadow:
-        0 0 15px #ff45bd;
+        0 0 15px #ff43bb;
 }
 
-.small {
-    margin-top: 12px;
-
-    color: #bca4b9;
+.ending {
+    color: #bda8ba;
 
     font-size: 13px;
 
     line-height: 1.7;
 
-    max-width: 500px;
-}
+    margin-top: 8px;
 
-.music {
-    margin-top: 18px;
+    max-width: 450px;
 }
 
 .restart {
@@ -390,19 +388,19 @@ h2 {
     font-size: 12px;
 }
 
+
 /* DOTS */
 
 .dots {
     position: fixed;
 
-    z-index: 5;
+    z-index: 10;
 
-    bottom: 20px;
+    bottom: 18px;
 
     left: 50%;
 
-    transform:
-        translateX(-50%);
+    transform: translateX(-50%);
 
     display: flex;
 
@@ -415,81 +413,68 @@ h2 {
 
     border-radius: 50%;
 
-    background: #6f506c;
+    background: #684b64;
 
     transition: .3s;
 }
 
 .dot.active {
-    width: 24px;
+    width: 25px;
 
     border-radius: 10px;
 
     background: #ff79d2;
 
     box-shadow:
-        0 0 12px #ff35bb;
+        0 0 12px #ff35b9;
 }
+
 
 /* ANIMATIONS */
 
-@keyframes show {
-
+@keyframes fadeIn {
     from {
         opacity: 0;
-        transform:
-            scale(.97)
-            translateY(20px);
+        transform: scale(.97);
     }
 
     to {
         opacity: 1;
-        transform: none;
+        transform: scale(1);
+    }
+}
+
+@keyframes heartbeat {
+    50% {
+        transform: scale(1.12);
     }
 }
 
 @keyframes glow {
-
     50% {
         opacity: .55;
-
-        text-shadow:
-            0 0 20px #ff40bd;
     }
 }
 
-@keyframes beat {
-
-    50% {
-        transform: scale(1.13);
-    }
-}
-
-@keyframes spin {
-
+@keyframes rotate {
     to {
         transform: rotate(360deg);
     }
 }
 
-@keyframes card {
-
+@keyframes cardFloat {
     50% {
         transform: translateY(-4px);
     }
 }
 
-@keyframes cake {
-
+@keyframes cakeBounce {
     50% {
-        transform:
-            translateY(-7px)
-            rotate(-2deg);
+        transform: translateY(-7px) rotate(-2deg);
     }
 }
 
-@keyframes up {
-
+@keyframes floatUp {
     to {
         transform:
             translateY(-115vh)
@@ -499,46 +484,48 @@ h2 {
     }
 }
 
+
 /* MOBILE */
 
 @media (max-width: 600px) {
 
     .slide {
         padding:
-            35px 14px 75px;
+            20px 12px 65px;
     }
 
-    .heart {
-        font-size: 82px;
+    .big-heart {
+        font-size: 75px;
     }
 
-    .prayer {
-        grid-template-columns:
-            1fr 1fr;
-
-        gap: 9px;
-    }
-
-    .prayer p {
-        min-height: 125px;
-
-        font-size: 13px;
-
-        padding:
-            14px 9px;
-    }
-
-    .letter {
-        padding:
-            20px 16px;
-    }
-
-    .letter p {
+    .message {
         font-size: 14px;
     }
 
-    .next,
-    .music {
+    .card {
+        padding: 15px;
+    }
+
+    .card p {
         font-size: 13px;
     }
-            }
+
+    .prayers {
+        gap: 8px;
+    }
+
+    .prayers div {
+        min-height: 110px;
+
+        padding: 12px 8px;
+
+        font-size: 12px;
+    }
+
+    button {
+        font-size: 13px;
+
+        padding:
+            12px 20px;
+    }
+    }
