@@ -1,227 +1,242 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap');
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 body {
     min-height: 100vh;
     background:
-        radial-gradient(circle at 50% 20%, rgba(190, 65, 180, 0.18), transparent 35%),
-        radial-gradient(circle at 20% 80%, rgba(255, 75, 170, 0.10), transparent 30%),
-        #08030d;
+        radial-gradient(circle at top, #35104d 0%, #16091f 45%, #08050c 100%);
     color: #fff;
-    font-family: "Cormorant Garamond", serif;
+    font-family: Georgia, "Times New Roman", serif;
     overflow-x: hidden;
 }
 
-/* Main container */
-.container {
-    width: 100%;
-    min-height: 100vh;
-    padding: 35px 18px 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
+/* =========================
+   MAIN SCREEN
+========================= */
 
-.content {
+.screen {
+    min-height: 100vh;
     width: 100%;
-    max-width: 850px;
+    padding: 35px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     position: relative;
     z-index: 2;
 }
 
-/* Small heading */
-.subtitle {
-    font-size: 20px;
-    letter-spacing: 4px;
-    color: #e8cce8;
-    margin-bottom: 22px;
-    animation: fadeIn 2s ease;
+.small-title {
+    color: #f5b8df;
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
 }
 
-/* Name */
-h1 {
-    font-family: "Playfair Display", serif;
-    font-size: clamp(55px, 12vw, 105px);
-    font-style: italic;
-    line-height: 1;
-    color: #ff8edb;
+.screen h1 {
+    font-size: clamp(48px, 13vw, 85px);
+    color: #ff9bdc;
     text-shadow:
-        0 0 10px rgba(255, 92, 204, 0.7),
-        0 0 35px rgba(196, 45, 180, 0.45);
-    margin-bottom: 12px;
+        0 0 10px #ff4fc4,
+        0 0 30px #a92891;
+    margin-bottom: 5px;
 }
 
-/* Nickname */
-.nickname {
-    font-family: "Playfair Display", serif;
-    font-size: clamp(28px, 6vw, 48px);
-    font-style: italic;
-    color: #f5b7ed;
-    margin-bottom: 35px;
+.screen h2 {
+    color: #f7d2ec;
+    font-size: clamp(23px, 6vw, 38px);
+    font-weight: normal;
 }
 
-/* Decorative line */
-.divider {
-    width: 80%;
-    max-width: 500px;
-    height: 1px;
-    margin: 20px auto 30px;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        #ff70d1,
-        #ffffff,
-        #ff70d1,
-        transparent
-    );
-    box-shadow: 0 0 12px rgba(255, 100, 210, 0.6);
+.love-line {
+    margin: 25px 0;
+    color: #ff72d2;
+    font-size: 22px;
+    text-shadow: 0 0 15px #ff3fc5;
 }
 
-/* Countdown */
+.waiting {
+    color: #dcb8d8;
+    font-size: 16px;
+    max-width: 400px;
+    line-height: 1.7;
+}
+
+/* =========================
+   COUNTDOWN
+========================= */
+
 .countdown {
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin: 30px auto;
+    justify-content: center;
+    margin: 30px 0 20px;
+    gap: 10px;
 }
 
 .time-box {
-    min-width: 110px;
-    padding: 20px 15px;
-    border: 1px solid rgba(255, 137, 222, 0.4);
-    border-radius: 22px;
-    background: rgba(255, 255, 255, 0.035);
+    min-width: 82px;
+    padding: 15px 10px;
+    border: 1px solid rgba(255, 116, 210, 0.5);
+    border-radius: 16px;
+    background: rgba(255, 70, 190, 0.08);
     box-shadow:
-        inset 0 0 20px rgba(255, 78, 203, 0.04),
-        0 0 25px rgba(175, 49, 157, 0.10);
-    backdrop-filter: blur(8px);
+        0 0 20px rgba(255, 45, 190, 0.15),
+        inset 0 0 20px rgba(255, 45, 190, 0.05);
 }
 
 .time-box span {
     display: block;
-}
-
-.time-number {
-    font-family: "Playfair Display", serif;
-    font-size: 48px;
     color: #fff;
-    text-shadow: 0 0 15px rgba(255, 121, 220, 0.7);
+    font-size: 30px;
+    font-weight: bold;
 }
 
-.time-label {
-    margin-top: 5px;
-    font-size: 13px;
-    letter-spacing: 4px;
-    color: #d8b6d8;
+.time-box small {
+    color: #dba8d2;
+    font-size: 9px;
+    letter-spacing: 1px;
 }
 
 .colon {
-    font-size: 38px;
-    color: #ff76d4;
-    text-shadow: 0 0 15px #ff50c7;
+    color: #ff75d5;
+    font-size: 28px;
 }
 
-/* Date */
 .date {
-    margin-top: 28px;
-    font-size: 21px;
-    letter-spacing: 9px;
-    color: #d9bdd8;
+    color: #f0b6df;
+    letter-spacing: 5px;
+    font-size: 13px;
 }
 
-/* Secret message */
 .secret {
-    margin: 35px auto 0;
-    max-width: 600px;
-    font-size: 22px;
-    line-height: 1.7;
-    color: #d9c9d8;
+    margin-top: 25px;
+    color: #a98ba8;
+    font-size: 13px;
 }
 
-/* Reveal section */
-#reveal {
+/* =========================
+   BIRTHDAY REVEAL
+========================= */
+
+.birthday {
     display: none;
-    width: 100%;
+    padding: 55px 22px;
     min-height: 100vh;
-    padding: 70px 20px;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background:
-        radial-gradient(circle at center, rgba(255, 55, 185, 0.18), transparent 45%),
-        #08030d;
+    animation: reveal 1.5s ease forwards;
 }
 
-#reveal.show {
+.birthday.show {
     display: flex;
 }
 
-.reveal-content {
-    max-width: 850px;
-    animation: revealUp 1.5s ease;
+.sparkle {
+    color: #ff9ce0;
+    font-size: 25px;
+    letter-spacing: 12px;
+    margin-bottom: 20px;
+    animation: sparkle 2s infinite;
 }
 
-.reveal-title {
-    font-family: "Playfair Display", serif;
-    font-size: clamp(48px, 10vw, 90px);
-    font-style: italic;
-    color: #ff91dc;
-    text-shadow:
-        0 0 15px #ff55c8,
-        0 0 40px rgba(255, 60, 190, 0.5);
-    margin-bottom: 25px;
+.birthday-top {
+    color: #e9a8d5;
+    font-size: 12px;
+    letter-spacing: 3px;
+    margin-bottom: 18px;
 }
+
+.birthday-name {
+    color: #ff8edb;
+    font-size: clamp(42px, 11vw, 72px);
+    text-shadow:
+        0 0 12px #ff48c4,
+        0 0 35px #a52a91;
+    margin-bottom: 12px;
+}
+
+.name {
+    color: #ffe0f5;
+    font-size: clamp(20px, 5vw, 32px);
+    font-weight: normal;
+    margin-bottom: 15px;
+}
+
+.big-heart {
+    font-size: 65px;
+    margin: 5px 0 10px;
+    animation: heartbeat 1.4s infinite;
+    filter: drop-shadow(0 0 18px #ff4fc4);
+}
+
+/* =========================
+   MUSIC BUTTON
+========================= */
+
+.music-button {
+    margin: 12px 0 25px;
+    padding: 13px 25px;
+    border: 1px solid rgba(255, 150, 225, 0.7);
+    border-radius: 50px;
+    background: rgba(255, 70, 190, 0.15);
+    color: #ffe8f8;
+    font-size: 14px;
+    font-family: inherit;
+    cursor: pointer;
+    box-shadow:
+        0 0 15px rgba(255, 60, 190, 0.3);
+    transition: 0.3s ease;
+}
+
+.music-button:hover {
+    transform: scale(1.05);
+    background: rgba(255, 70, 190, 0.28);
+    box-shadow:
+        0 0 25px rgba(255, 70, 190, 0.5);
+}
+
+.music-button:active {
+    transform: scale(0.96);
+}
+
+/* =========================
+   MESSAGE
+========================= */
 
 .message {
-    font-size: clamp(20px, 4vw, 27px);
-    line-height: 1.8;
-    color: #eadbea;
-}
-
-.message br {
-    line-height: 2;
-}
-
-/* Forever text */
-.forever {
-    margin: 35px 0;
-    font-family: "Playfair Display", serif;
-    font-size: 25px;
-    font-style: italic;
-    color: #ff9be1;
-    text-shadow: 0 0 15px rgba(255, 70, 195, 0.7);
-}
-
-/* Ending */
-.ending {
-    margin-top: 30px;
-    font-family: "Playfair Display", serif;
-    font-size: 28px;
-    font-style: italic;
-    color: #fff;
-}
-
-/* Footer */
-.footer {
-    margin-top: 45px;
+    max-width: 650px;
+    color: #ead3e5;
     font-size: 16px;
-    letter-spacing: 2px;
-    color: #8e718c;
+    line-height: 1.9;
+    white-space: normal;
 }
 
-/* Floating hearts */
+.forever {
+    margin-top: 30px;
+    color: #ff9ddd;
+    font-size: 15px;
+}
+
+.ending {
+    margin-top: 22px;
+    color: #ffe2f5;
+    font-size: 19px;
+    text-shadow: 0 0 12px #ff4fc4;
+}
+
+.footer {
+    margin-top: 18px;
+    color: #987b96;
+    font-size: 12px;
+}
+
+/* =========================
+   FLOATING HEARTS
+========================= */
+
 .hearts {
     position: fixed;
     inset: 0;
@@ -233,68 +248,124 @@ h1 {
 .hearts span {
     position: absolute;
     bottom: -50px;
-    color: #ff68d0;
-    font-size: 22px;
-    opacity: 0.55;
-    animation: floatHeart linear infinite;
-    text-shadow: 0 0 12px rgba(255, 70, 200, 0.8);
+    color: rgba(255, 117, 213, 0.35);
+    font-size: 25px;
+    animation: float 10s linear infinite;
 }
 
 .hearts span:nth-child(1) {
-    left: 10%;
-    animation-duration: 9s;
+    left: 5%;
     animation-delay: 0s;
 }
 
 .hearts span:nth-child(2) {
-    left: 28%;
-    animation-duration: 12s;
+    left: 18%;
     animation-delay: 2s;
 }
 
 .hearts span:nth-child(3) {
-    left: 48%;
-    animation-duration: 10s;
+    left: 31%;
     animation-delay: 4s;
 }
 
 .hearts span:nth-child(4) {
-    left: 70%;
-    animation-duration: 13s;
+    left: 45%;
     animation-delay: 1s;
 }
 
 .hearts span:nth-child(5) {
-    left: 88%;
-    animation-duration: 11s;
+    left: 58%;
     animation-delay: 3s;
 }
 
-/* Animations */
-@keyframes floatHeart {
-    0% {
-        transform: translateY(0) scale(0.7) rotate(0deg);
+.hearts span:nth-child(6) {
+    left: 72%;
+    animation-delay: 5s;
+}
+
+.hearts span:nth-child(7) {
+    left: 84%;
+    animation-delay: 2.5s;
+}
+
+.hearts span:nth-child(8) {
+    left: 94%;
+    animation-delay: 4.5s;
+}
+
+.floating-heart {
+    position: fixed;
+    bottom: -40px;
+    color: #ff8edb;
+    font-size: 22px;
+    pointer-events: none;
+    z-index: 10;
+    animation: rise 8s linear forwards;
+    text-shadow: 0 0 12px #ff3fc5;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes float {
+    from {
+        transform: translateY(0) rotate(0deg);
         opacity: 0;
     }
 
     15% {
-        opacity: 0.6;
+        opacity: 1;
     }
 
-    50% {
-        transform: translateY(-50vh) scale(1) rotate(15deg);
-    }
-
-    100% {
-        transform: translateY(-115vh) scale(1.3) rotate(-15deg);
+    to {
+        transform: translateY(-110vh) rotate(360deg);
         opacity: 0;
     }
 }
 
-@keyframes fadeIn {
+@keyframes rise {
+    from {
+        transform: translateY(0) scale(0.8);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(-110vh) scale(1.4);
+        opacity: 0;
+    }
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.18);
+    }
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.12);
+    }
+}
+
+@keyframes reveal {
     from {
         opacity: 0;
-        transform: translateY(15px);
+        transform: translateY(25px);
     }
 
     to {
@@ -303,71 +374,40 @@ h1 {
     }
 }
 
-@keyframes revealUp {
-    from {
-        opacity: 0;
-        transform: translateY(50px) scale(0.95);
-    }
+/* =========================
+   MOBILE
+========================= */
 
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
+@media (max-width: 480px) {
 
-/* Mobile */
-@media (max-width: 600px) {
-
-    .container {
-        padding: 25px 14px 40px;
-    }
-
-    .subtitle {
-        font-size: 15px;
-        letter-spacing: 2px;
-    }
-
-    .nickname {
-        margin-bottom: 25px;
+    .screen {
+        padding: 25px 16px;
     }
 
     .countdown {
-        gap: 7px;
+        gap: 5px;
     }
 
     .time-box {
-        min-width: 88px;
-        padding: 15px 8px;
-        border-radius: 18px;
+        min-width: 70px;
+        padding: 12px 7px;
     }
 
-    .time-number {
-        font-size: 36px;
-    }
-
-    .time-label {
-        font-size: 10px;
-        letter-spacing: 2px;
-    }
-
-    .colon {
+    .time-box span {
         font-size: 25px;
     }
 
-    .date {
-        font-size: 17px;
-        letter-spacing: 5px;
-    }
-
-    .secret {
-        font-size: 19px;
+    .colon {
+        font-size: 22px;
     }
 
     .message {
-        font-size: 20px;
+        font-size: 15px;
+        line-height: 1.8;
     }
 
-    .forever {
-        font-size: 22px;
+    .music-button {
+        font-size: 13px;
+        padding: 12px 20px;
     }
-    }
+}
