@@ -1,18 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>For Shamama ♡</title>
+<title>For My Janu ♡</title>
 
 <style>
-
-/* =========================
-   RESET
-========================= */
-
 *{
     margin:0;
     padding:0;
@@ -21,626 +15,591 @@
 
 html,body{
     width:100%;
-    height:100%;
+    min-height:100%;
 }
 
 body{
-    overflow:hidden;
-    font-family:Georgia,serif;
-    background:#090612;
+    font-family:Georgia, "Times New Roman", serif;
+    background:#08030d;
     color:white;
+    overflow-x:hidden;
 }
 
-
-/* =========================
-   BACKGROUND
-========================= */
+/* BACKGROUND */
 
 body::before{
     content:"";
     position:fixed;
     inset:0;
+    z-index:-5;
 
     background:
-    radial-gradient(
-        circle at 50% 30%,
-        rgba(180,40,180,.20),
-        transparent 38%
-    ),
-    radial-gradient(
-        circle at 15% 85%,
-        rgba(255,70,170,.13),
-        transparent 30%
-    ),
-    radial-gradient(
-        circle at 90% 15%,
-        rgba(80,60,255,.12),
-        transparent 30%
-    );
-
-    z-index:-2;
+        radial-gradient(circle at 20% 20%, rgba(255,40,180,.18), transparent 30%),
+        radial-gradient(circle at 80% 30%, rgba(130,40,255,.20), transparent 32%),
+        radial-gradient(circle at 50% 90%, rgba(255,0,120,.13), transparent 35%),
+        #08030d;
 }
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-4;
+    background:
+        linear-gradient(
+            120deg,
+            transparent 0%,
+            rgba(255,255,255,.025) 50%,
+            transparent 100%
+        );
+}
+
+/* FLOATING PARTICLES */
 
 #particles{
     position:fixed;
     inset:0;
     overflow:hidden;
     pointer-events:none;
-    z-index:-1;
+    z-index:1;
 }
 
+.particle{
+    position:absolute;
+    bottom:-50px;
+    color:#ff7bd5;
+    text-shadow:0 0 12px #ff1ebc;
+    animation:floatUp linear forwards;
+    opacity:.7;
+}
 
-/* =========================
-   INTRO SCREEN
-========================= */
+@keyframes floatUp{
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:0;
+    }
 
-#countdownScreen{
-    width:100%;
-    height:100vh;
+    15%{
+        opacity:.8;
+    }
 
+    100%{
+        transform:translateY(-115vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* COUNTDOWN */
+
+#countdown{
+    min-height:100vh;
     display:flex;
-    align-items:center;
     justify-content:center;
-
+    align-items:center;
     padding:20px;
 }
 
-.box{
-    width:min(680px,100%);
-
+.countBox{
+    width:min(700px,100%);
     text-align:center;
-
-    padding:45px 25px;
-
-    border:1px solid rgba(255,150,225,.3);
-
+    padding:45px 22px;
     border-radius:35px;
 
-    background:
-    rgba(20,8,30,.72);
+    background:rgba(20,5,30,.72);
 
-    backdrop-filter:blur(14px);
+    border:1px solid rgba(255,130,220,.28);
 
     box-shadow:
-    0 0 70px rgba(220,40,180,.15),
-    inset 0 0 40px rgba(255,100,210,.03);
+        0 0 80px rgba(255,20,180,.13),
+        inset 0 0 50px rgba(255,100,200,.025);
+
+    backdrop-filter:blur(15px);
 }
 
-
-/* =========================
-   TOP
-========================= */
-
-.eyebrow{
-    color:#d9a7d5;
-
+.smallText{
+    color:#cba6c7;
     font-size:11px;
-
     letter-spacing:4px;
-
-    margin-bottom:25px;
+    margin-bottom:22px;
 }
 
-.logoHeart{
+.bigHeart{
     font-size:75px;
-
-    color:#ff8ed8;
+    color:#ff83d3;
 
     text-shadow:
-    0 0 15px #ff3bb9,
-    0 0 50px #8d1b77;
+        0 0 15px #ff20b5,
+        0 0 50px #8d1475;
 
-    animation:pulse 1.8s infinite;
+    animation:heartBeat 1.7s infinite;
 }
 
-h1{
+@keyframes heartBeat{
+    50%{
+        transform:scale(1.15);
+    }
+}
+
+.countTitle{
     margin-top:10px;
-
-    font-size:clamp(38px,10vw,70px);
-
+    font-size:clamp(38px,10vw,68px);
     font-weight:normal;
-
     font-style:italic;
-
-    color:#ffd4ef;
-
-    text-shadow:
-    0 0 20px rgba(255,50,190,.7);
+    color:#ffd8f0;
 }
 
-.name{
-    margin-top:8px;
+.januName{
+    margin-top:10px;
+    font-size:clamp(28px,8vw,45px);
+    color:#ff91d8;
 
-    font-size:clamp(25px,7vw,42px);
-
-    color:#ff91d6;
+    text-shadow:0 0 18px rgba(255,50,190,.5);
 }
 
-.subtitle{
-    margin-top:12px;
-
-    color:#bca9bd;
-
+.waitText{
+    margin-top:15px;
+    color:#cbb7ca;
     font-size:14px;
-
     line-height:1.7;
 }
 
+/* TIMER */
 
-/* =========================
-   COUNTDOWN
-========================= */
-
-.countdown{
+.timer{
     display:grid;
-
-    grid-template-columns:
-    repeat(4,1fr);
-
+    grid-template-columns:repeat(4,1fr);
     gap:10px;
-
-    margin:35px auto 10px;
-
-    max-width:540px;
+    margin:35px auto 20px;
+    max-width:560px;
 }
 
-.timeBox{
-    padding:18px 8px;
-
+.timerBox{
+    padding:18px 6px;
     border-radius:20px;
 
-    border:1px solid
-    rgba(255,120,210,.25);
-
-    background:
-    linear-gradient(
+    background:linear-gradient(
         145deg,
-        rgba(255,60,190,.10),
-        rgba(60,30,100,.16)
+        rgba(255,40,190,.12),
+        rgba(80,30,130,.14)
     );
+
+    border:1px solid rgba(255,120,210,.25);
 }
 
-.number{
+.timerNumber{
     display:block;
+    font-size:clamp(25px,7vw,44px);
+    color:#ffe1f4;
 
-    font-size:clamp(25px,7vw,43px);
-
-    color:#ffe1f5;
-
-    text-shadow:
-    0 0 15px #ff40bc;
+    text-shadow:0 0 14px #ff37bd;
 }
 
-.label{
+.timerLabel{
     display:block;
-
     margin-top:5px;
-
-    font-size:9px;
-
+    font-size:8px;
     letter-spacing:2px;
-
-    color:#bfa9bd;
+    color:#ae9caf;
 }
 
-
-/* =========================
-   MESSAGE
-========================= */
-
-.waiting{
-    margin-top:25px;
-
-    color:#d5bfd2;
-
-    font-size:13px;
-
-    line-height:1.8;
-}
-
-.date{
-    margin-top:12px;
-
-    color:#ff91d7;
-
+.target{
+    margin-top:15px;
+    color:#ff9ddd;
     font-size:12px;
-
     letter-spacing:2px;
 }
 
+/* BIRTHDAY WEBSITE */
 
-/* =========================
-   REVEAL
-========================= */
-
-#revealScreen{
+#birthday{
     display:none;
-
-    width:100%;
-    height:100vh;
-
-    overflow-y:auto;
-
-    padding:35px 18px 50px;
-
-    text-align:center;
+    min-height:100vh;
+    padding:25px 15px 50px;
 }
 
-#revealScreen.show{
+#birthday.active{
     display:block;
-
-    animation:reveal .9s ease;
+    animation:pageIn .8s ease;
 }
 
-.revealInner{
-    width:min(760px,100%);
+@keyframes pageIn{
+    from{
+        opacity:0;
+        transform:scale(.96);
+    }
 
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+/* SLIDER */
+
+.slider{
+    width:min(780px,100%);
     margin:auto;
+    position:relative;
 }
 
-.badge{
-    display:inline-block;
-
-    padding:8px 18px;
-
-    border-radius:50px;
-
-    border:1px solid
-    rgba(255,130,215,.4);
-
-    color:#ff9bd9;
-
-    font-size:10px;
-
-    letter-spacing:3px;
-
-    background:rgba(255,50,180,.07);
+.slide{
+    display:none;
+    text-align:center;
+    min-height:calc(100vh - 75px);
+    align-items:center;
+    justify-content:center;
 }
 
-.revealTitle{
-    margin-top:25px;
-
-    font-size:clamp(43px,12vw,85px);
-
-    font-weight:normal;
-
-    font-style:italic;
-
-    color:#ffd7ef;
-
-    text-shadow:
-    0 0 20px #ff3db9,
-    0 0 50px #8d1b78;
+.slide.active{
+    display:flex;
+    animation:slideIn .7s ease;
 }
 
-.revealName{
-    margin-top:5px;
+@keyframes slideIn{
+    from{
+        opacity:0;
+        transform:translateX(35px);
+    }
 
-    font-size:clamp(30px,8vw,52px);
-
-    color:#ff8bd4;
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
 }
 
+.card{
+    width:100%;
+    padding:35px 22px;
+    border-radius:32px;
 
-/* =========================
-   WISH CARD
-========================= */
+    background:rgba(22,6,32,.78);
 
-.wishCard{
-    margin:30px auto;
-
-    padding:28px 22px;
-
-    border-radius:28px;
-
-    border:1px solid
-    rgba(255,140,220,.3);
-
-    background:
-    rgba(25,8,35,.72);
+    border:1px solid rgba(255,130,220,.28);
 
     box-shadow:
-    0 0 45px rgba(255,40,180,.10);
+        0 0 65px rgba(255,20,180,.12),
+        inset 0 0 40px rgba(255,100,200,.025);
+
+    backdrop-filter:blur(15px);
 }
 
-.wishCard p{
-    margin:15px 0;
-
-    color:#e6d5e3;
-
-    font-size:15px;
-
-    line-height:1.85;
+.slideNumber{
+    color:#c696c4;
+    font-size:10px;
+    letter-spacing:4px;
+    margin-bottom:25px;
 }
 
-.divider{
-    color:#ff83d1;
+.slideIcon{
+    font-size:65px;
+    margin-bottom:15px;
 
-    letter-spacing:7px;
+    filter:drop-shadow(0 0 15px rgba(255,60,200,.7));
 
-    margin:20px 0;
+    animation:iconFloat 2s infinite ease-in-out;
 }
 
+@keyframes iconFloat{
+    50%{
+        transform:translateY(-8px);
+    }
+}
 
-/* =========================
-   PRAYERS
-========================= */
-
-.prayerTitle{
-    margin-top:35px;
-
-    color:#ffb1df;
-
-    font-size:28px;
-
+.slide h1{
+    font-size:clamp(38px,10vw,65px);
     font-weight:normal;
+    font-style:italic;
+    color:#ffd8ef;
+
+    text-shadow:
+        0 0 20px #ff35bb,
+        0 0 50px rgba(150,20,130,.5);
 }
 
-.prayers{
+.slide h2{
+    margin-top:8px;
+    font-size:clamp(25px,7vw,42px);
+    color:#ff8ed5;
+}
+
+.slide p{
+    margin:20px auto;
+    max-width:620px;
+
+    color:#dfcedd;
+    font-size:15px;
+    line-height:1.9;
+}
+
+.decor{
+    color:#ff81d0;
+    letter-spacing:8px;
+    margin:22px 0;
+}
+
+/* DUAS */
+
+.duas{
     display:grid;
-
-    grid-template-columns:
-    repeat(2,1fr);
-
+    grid-template-columns:1fr 1fr;
     gap:12px;
-
-    margin-top:18px;
+    margin-top:25px;
 }
 
-.prayer{
-    min-height:120px;
+.dua{
+    padding:20px 13px;
+    min-height:125px;
 
     display:flex;
-
     align-items:center;
     justify-content:center;
 
-    padding:18px;
+    border-radius:22px;
 
-    border-radius:20px;
+    background:rgba(255,50,180,.055);
 
-    border:1px solid
-    rgba(255,130,215,.20);
+    border:1px solid rgba(255,130,220,.18);
 
-    background:
-    rgba(30,10,40,.65);
-
-    color:#ddcadb;
-
+    color:#dfcedd;
     font-size:13px;
-
     line-height:1.7;
 
     transition:.3s;
 }
 
-.prayer:hover{
-    transform:translateY(-4px);
-
-    border-color:
-    rgba(255,130,215,.55);
+.dua:hover{
+    transform:translateY(-5px);
+    border-color:rgba(255,130,220,.55);
 }
 
+/* SPECIAL MESSAGE */
 
-/* =========================
-   CAKE
-========================= */
+.messageBox{
+    margin-top:25px;
+    padding:25px 18px;
+
+    border-left:2px solid #ff68c7;
+    border-right:2px solid #ff68c7;
+
+    background:rgba(255,40,180,.045);
+
+    border-radius:20px;
+}
+
+.messageBox p{
+    margin:8px auto;
+}
+
+/* CAKE */
 
 .cake{
-    font-size:70px;
+    font-size:90px;
+    margin:15px 0;
 
-    margin:28px 0 10px;
-
-    animation:cake 1.5s infinite;
+    animation:cakeBounce 1.5s infinite;
 }
 
-.finalText{
-    color:#ffe0f2;
-
-    font-size:22px;
-
-    line-height:1.5;
-}
-
-.footer{
-    margin-top:20px;
-
-    color:#9f8a9e;
-
-    font-size:11px;
-
-    letter-spacing:1px;
-}
-
-
-/* =========================
-   PARTICLES
-========================= */
-
-.particle{
-    position:absolute;
-
-    bottom:-30px;
-
-    color:#ff78cd;
-
-    text-shadow:
-    0 0 12px #ff38b8;
-
-    animation:rise linear forwards;
-
-    opacity:.7;
-}
-
-
-/* =========================
-   ANIMATIONS
-========================= */
-
-@keyframes pulse{
-
+@keyframes cakeBounce{
     50%{
-        transform:scale(1.12);
+        transform:translateY(-10px) rotate(-2deg);
     }
-
 }
 
-@keyframes rise{
+/* BUTTONS */
 
-    to{
-        transform:
-        translateY(-115vh)
-        rotate(360deg);
+.navigation{
+    position:fixed;
+    bottom:18px;
+    left:0;
+    right:0;
 
-        opacity:0;
-    }
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
 
+    z-index:10;
 }
 
-@keyframes reveal{
+.navBtn{
+    border:none;
+    outline:none;
 
-    from{
-        opacity:0;
-        transform:scale(.94)
-        translateY(25px);
-    }
+    padding:11px 20px;
 
-    to{
-        opacity:1;
-        transform:none;
-    }
+    border-radius:50px;
 
+    color:white;
+    background:rgba(80,15,90,.85);
+
+    border:1px solid rgba(255,120,215,.35);
+
+    font-family:Georgia,serif;
+    cursor:pointer;
+
+    box-shadow:0 0 20px rgba(255,30,180,.12);
+
+    transition:.25s;
 }
 
-@keyframes cake{
-
-    50%{
-        transform:
-        translateY(-8px)
-        rotate(-3deg);
-    }
-
+.navBtn:hover{
+    transform:translateY(-2px);
+    background:rgba(130,20,110,.9);
 }
 
+.dots{
+    display:flex;
+    gap:6px;
+}
 
-/* =========================
-   MOBILE
-========================= */
+.dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#6b4b68;
+    transition:.3s;
+}
+
+.dot.active{
+    background:#ff7bce;
+    box-shadow:0 0 10px #ff28b8;
+}
+
+/* FINAL */
+
+.finalHeart{
+    font-size:80px;
+    margin:10px 0;
+
+    animation:heartBeat 1.6s infinite;
+}
+
+.signature{
+    margin-top:25px;
+    color:#ff91d8;
+    font-size:14px;
+    letter-spacing:2px;
+}
+
+/* MOBILE */
 
 @media(max-width:600px){
 
-    .box{
-        padding:35px 16px;
+    .countBox{
+        padding:35px 15px;
     }
 
-    .countdown{
-        gap:7px;
+    .timer{
+        gap:6px;
     }
 
-    .timeBox{
-        padding:15px 5px;
+    .timerBox{
+        padding:15px 4px;
     }
 
-    .label{
-        font-size:8px;
+    .timerLabel{
+        font-size:7px;
         letter-spacing:1px;
     }
 
-    .wishCard{
-        padding:22px 16px;
+    .card{
+        padding:30px 15px 90px;
     }
 
-    .wishCard p{
+    .slide{
+        min-height:calc(100vh - 20px);
+    }
+
+    .slide p{
         font-size:14px;
+        line-height:1.8;
     }
 
-    .prayers{
+    .duas{
         grid-template-columns:1fr 1fr;
         gap:8px;
     }
 
-    .prayer{
-        min-height:125px;
+    .dua{
+        min-height:130px;
         padding:12px 8px;
         font-size:12px;
     }
 
+    .navigation{
+        bottom:10px;
+    }
+
+    .navBtn{
+        padding:9px 15px;
+        font-size:12px;
+    }
 }
-
 </style>
-
 </head>
-
 
 <body>
 
+<!-- FLOATING PARTICLES -->
+<div id="particles"></div>
 
-<!-- =========================
-     COUNTDOWN SCREEN
-========================= -->
 
-<section id="countdownScreen">
+<!-- ==============================
+     COUNTDOWN
+============================== -->
 
-    <div class="box">
+<section id="countdown">
 
-        <div class="eyebrow">
-            ✦ A LITTLE SURPRISE ✦
+    <div class="countBox">
+
+        <div class="smallText">
+            ✦ SOMETHING SPECIAL IS WAITING ✦
         </div>
 
-        <div class="logoHeart">
+        <div class="bigHeart">
             ♡
         </div>
 
-        <h1>
-            Something Special
+        <h1 class="countTitle">
+            A Surprise For
         </h1>
 
-        <div class="name">
-            𝑺𝒉𝒂𝒎𝒂𝒎𝒂
+        <div class="januName">
+            𝑴𝒚 𝑱𝒂𝒏𝒖 ♡
         </div>
 
-        <p class="subtitle">
-            My Churail ♡
+        <p class="waitText">
+            A little birthday surprise is waiting...
             <br>
-            Your birthday surprise is waiting...
+            Unlocking at exactly midnight ✨
         </p>
 
+        <div class="timer">
 
-        <!-- COUNTDOWN -->
-
-        <div class="countdown">
-
-            <div class="timeBox">
-                <span id="days" class="number">00</span>
-                <span class="label">DAYS</span>
+            <div class="timerBox">
+                <span id="days" class="timerNumber">00</span>
+                <span class="timerLabel">DAYS</span>
             </div>
 
-            <div class="timeBox">
-                <span id="hours" class="number">00</span>
-                <span class="label">HOURS</span>
+            <div class="timerBox">
+                <span id="hours" class="timerNumber">00</span>
+                <span class="timerLabel">HOURS</span>
             </div>
 
-            <div class="timeBox">
-                <span id="minutes" class="number">00</span>
-                <span class="label">MINUTES</span>
+            <div class="timerBox">
+                <span id="minutes" class="timerNumber">00</span>
+                <span class="timerLabel">MINUTES</span>
             </div>
 
-            <div class="timeBox">
-                <span id="seconds" class="number">00</span>
-                <span class="label">SECONDS</span>
+            <div class="timerBox">
+                <span id="seconds" class="timerNumber">00</span>
+                <span class="timerLabel">SECONDS</span>
             </div>
 
         </div>
 
-
-        <p class="waiting">
-            The surprise will unlock exactly at
-            <br>
-            <strong>12:00 AM Pakistan Time</strong>
-        </p>
-
-        <div class="date">
-            ✦ 19 SEPTEMBER ✦
+        <div class="target">
+            ✦ 19 SEPTEMBER • 12:00 AM PKT ✦
         </div>
 
     </div>
@@ -648,138 +607,315 @@ h1{
 </section>
 
 
+<!-- ==============================
+     BIRTHDAY
+============================== -->
 
-<!-- =========================
-     REVEAL SCREEN
-========================= -->
+<section id="birthday">
 
-<section id="revealScreen">
-
-    <div class="revealInner">
-
-        <div class="badge">
-            ✦ MIDNIGHT REVEAL ✦
-        </div>
+<div class="slider">
 
 
-        <h1 class="revealTitle">
-            Happy Birthday
-        </h1>
+<!-- SLIDE 1 -->
 
-        <div class="revealName">
-            𝑺𝒉𝒂𝒎𝒂𝒎𝒂 ♡
-        </div>
+<div class="slide active">
 
+<div class="card">
 
-        <div class="wishCard">
+<div class="slideNumber">
+    01 / 05
+</div>
 
-            <div class="divider">
-                ♡ ✦ ♡
-            </div>
+<div class="slideIcon">
+    🎀
+</div>
 
-            <p>
-                Today is your special day,
-                and may it bring you countless
-                smiles, peaceful moments and
-                beautiful memories. 🌸
-            </p>
+<h1>
+    Happy Birthday
+</h1>
 
-            <p>
-                May every new chapter of your life
-                bring new reasons to smile,
-                new dreams to follow and
-                beautiful moments to remember. ✨
-            </p>
+<h2>
+    𝑴𝒚 𝑱𝒂𝒏𝒖 ♡
+</h2>
 
-            <p>
-                Keep shining, keep smiling,
-                and never stop believing in
-                the beautiful things waiting
-                ahead. 🦋
-            </p>
+<div class="decor">
+    ♡ ✦ ♡
+</div>
 
-            <div class="divider">
-                ♡ ── ✦ ── ♡
-            </div>
+<p>
+    Finally the wait is over! 🥹✨
+    <br><br>
 
-        </div>
+    Today is your special day,
+    a day to celebrate the beautiful
+    person you are and all the happiness
+    you deserve.
+</p>
 
+<p>
+    May this new chapter of your life
+    be filled with countless smiles,
+    peaceful moments and beautiful memories. 🌸
+</p>
 
-        <h2 class="prayerTitle">
-            🤲 Birthday Duas
-        </h2>
+</div>
 
-
-        <div class="prayers">
-
-            <div class="prayer">
-                🤲 May Allah bless you with
-                happiness, peace and goodness.
-            </div>
-
-            <div class="prayer">
-                🌸 May every sincere dua
-                of yours be accepted.
-            </div>
-
-            <div class="prayer">
-                ✨ May Allah protect you
-                and guide you always.
-            </div>
-
-            <div class="prayer">
-                🌷 May your coming year
-                be full of beautiful memories.
-            </div>
-
-            <div class="prayer">
-                🕊️ May your heart always
-                have hope and peace.
-            </div>
-
-            <div class="prayer">
-                💗 May happiness find you
-                in the smallest moments.
-            </div>
-
-        </div>
+</div>
 
 
-        <div class="cake">
-            🎂
-        </div>
+<!-- SLIDE 2 -->
 
-        <div class="finalText">
-            Happy Birthday,
-            <br>
-            My Churail! 🥹❤️
-        </div>
+<div class="slide">
 
-        <div class="footer">
-            Made with lots of birthday wishes ✦
-        </div>
+<div class="card">
 
-    </div>
+<div class="slideNumber">
+    02 / 05
+</div>
+
+<div class="slideIcon">
+    💌
+</div>
+
+<h1>
+    A Little Message
+</h1>
+
+<div class="decor">
+    ✦ ── ♡ ── ✦
+</div>
+
+<div class="messageBox">
+
+<p>
+    Some people become memories...
+</p>
+
+<p>
+    Some become special moments...
+</p>
+
+<p>
+    And some simply become
+    a beautiful part of our lives. 🌷
+</p>
+
+<p>
+    So today, I just want to wish you
+    a life full of happiness,
+    peace and countless reasons to smile. 💗
+</p>
+
+</div>
+
+<div class="decor">
+    ♡ ✦ ♡
+</div>
+
+</div>
+
+</div>
+
+
+<!-- SLIDE 3 -->
+
+<div class="slide">
+
+<div class="card">
+
+<div class="slideNumber">
+    03 / 05
+</div>
+
+<div class="slideIcon">
+    🤲
+</div>
+
+<h1>
+    Birthday Duas
+</h1>
+
+<div class="duas">
+
+<div class="dua">
+    🤲 May Allah bless you
+    with happiness and peace.
+</div>
+
+<div class="dua">
+    🌸 May every sincere dua
+    of yours be accepted.
+</div>
+
+<div class="dua">
+    ✨ May Allah protect you
+    and guide you always.
+</div>
+
+<div class="dua">
+    🕊️ May your heart always
+    find peace and hope.
+</div>
+
+<div class="dua">
+    🌷 May your coming year
+    bring beautiful memories.
+</div>
+
+<div class="dua">
+    💗 May Allah keep smiles
+    on your face always.
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- SLIDE 4 -->
+
+<div class="slide">
+
+<div class="card">
+
+<div class="slideNumber">
+    04 / 05
+</div>
+
+<div class="slideIcon">
+    🌙
+</div>
+
+<h1>
+    For Your Future
+</h1>
+
+<div class="decor">
+    ✦ ✧ ✦
+</div>
+
+<p>
+    May every difficult road become easier,
+    every dream find its way toward reality,
+    and every new morning bring
+    something beautiful with it. ✨
+</p>
+
+<p>
+    May you always have people around you
+    who genuinely care about you,
+    moments worth remembering,
+    and reasons to be grateful. 🌸
+</p>
+
+<p>
+    And whenever life feels difficult,
+    may Allah give you strength,
+    patience and peace. 🤲
+</p>
+
+</div>
+
+</div>
+
+
+<!-- SLIDE 5 -->
+
+<div class="slide">
+
+<div class="card">
+
+<div class="slideNumber">
+    05 / 05
+</div>
+
+<div class="slideIcon">
+    🎂
+</div>
+
+<h1>
+    Once Again...
+</h1>
+
+<h2>
+    𝑯𝒂𝒑𝒑𝒚 𝑩𝒊𝒓𝒕𝒉𝒅𝒂𝒚 ♡
+</h2>
+
+<div class="cake">
+    🎂
+</div>
+
+<p>
+    May your birthday be the beginning
+    of another beautiful year of your life. 🌷
+</p>
+
+<p>
+    Keep smiling, keep shining,
+    and keep making beautiful memories. ✨
+</p>
+
+<div class="decor">
+    ♡ ── ✦ ── ♡
+</div>
+
+<div class="finalHeart">
+    ❤️
+</div>
+
+<div class="signature">
+    ✦ WITH LOTS OF BIRTHDAY WISHES ✦
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- NAVIGATION -->
+
+<div class="navigation">
+
+<button class="navBtn" id="prevBtn">
+    ← Prev
+</button>
+
+<div class="dots">
+
+<span class="dot active"></span>
+<span class="dot"></span>
+<span class="dot"></span>
+<span class="dot"></span>
+<span class="dot"></span>
+
+</div>
+
+<button class="navBtn" id="nextBtn">
+    Next →
+</button>
+
+</div>
 
 </section>
-
-
-<!-- PARTICLES -->
-
-<div id="particles"></div>
 
 
 <script>
 
-/* =====================================================
-   EXACT TARGET:
-   19 SEPTEMBER 2026
-   12:00 AM PAKISTAN TIME
+/* =========================================
+   EXACT BIRTHDAY TIME
 
-   Pakistan = UTC +05:00
-   Therefore:
-   2026-09-18 19:00:00 UTC
-===================================================== */
+   19 September 2026
+   12:00 AM Pakistan Time
+
+   Pakistan = UTC +5
+   Therefore UTC = 18 September 2026
+   19:00:00 UTC
+========================================= */
 
 const targetTime =
     new Date("2026-09-18T19:00:00Z").getTime();
@@ -787,12 +923,11 @@ const targetTime =
 
 /* ELEMENTS */
 
-const countdownScreen =
-    document.getElementById("countdownScreen");
+const countdown =
+    document.getElementById("countdown");
 
-const revealScreen =
-    document.getElementById("revealScreen");
-
+const birthday =
+    document.getElementById("birthday");
 
 const days =
     document.getElementById("days");
@@ -807,42 +942,47 @@ const seconds =
     document.getElementById("seconds");
 
 
-/* FORMAT */
+/* FORMAT NUMBER */
 
-function twoDigit(number){
+function twoDigit(value){
+    return String(value).padStart(2,"0");
+}
 
-    return String(number).padStart(2,"0");
+
+/* =========================================
+   SHOW BIRTHDAY
+========================================= */
+
+function revealBirthday(){
+
+    countdown.style.display = "none";
+
+    birthday.classList.add("active");
+
+    createBurst();
 
 }
 
 
-/* =====================================================
+/* =========================================
    COUNTDOWN
-===================================================== */
+========================================= */
 
-function updateCountdown(){
+function updateTimer(){
 
-    const now =
-        Date.now();
+    const now = Date.now();
 
-    let difference =
+    const difference =
         targetTime - now;
 
 
-    /* MIDNIGHT REACHED */
-
     if(difference <= 0){
 
-        revealScreen.classList.add("show");
+        revealBirthday();
 
-        countdownScreen.style.display = "none";
-
-        clearInterval(countdownInterval);
-
-        createRevealParticles();
+        clearInterval(timerInterval);
 
         return;
-
     }
 
 
@@ -851,9 +991,7 @@ function updateCountdown(){
 
 
     const d =
-        Math.floor(
-            totalSeconds / 86400
-        );
+        Math.floor(totalSeconds / 86400);
 
 
     const h =
@@ -883,29 +1021,25 @@ function updateCountdown(){
 
     seconds.textContent =
         twoDigit(s);
-
 }
 
 
-/* RUN IMMEDIATELY */
+/* RUN NOW */
 
-updateCountdown();
+updateTimer();
 
 
 /* UPDATE EVERY SECOND */
 
-const countdownInterval =
-    setInterval(
-        updateCountdown,
-        1000
-    );
+const timerInterval =
+    setInterval(updateTimer,1000);
 
 
-/* =====================================================
-   FLOATING PARTICLES
-===================================================== */
+/* =========================================
+   PARTICLES
+========================================= */
 
-const particleContainer =
+const particleBox =
     document.getElementById("particles");
 
 
@@ -921,15 +1055,13 @@ const symbols = [
 
 function createParticle(){
 
-    const particle =
+    const p =
         document.createElement("span");
 
-
-    particle.className =
+    p.className =
         "particle";
 
-
-    particle.textContent =
+    p.textContent =
         symbols[
             Math.floor(
                 Math.random() *
@@ -937,63 +1069,46 @@ function createParticle(){
             )
         ];
 
-
-    particle.style.left =
+    p.style.left =
         Math.random() * 100 + "vw";
 
+    p.style.fontSize =
+        (10 + Math.random() * 20) + "px";
 
-    particle.style.fontSize =
-        (10 + Math.random() * 22) + "px";
-
-
-    particle.style.animationDuration =
+    p.style.animationDuration =
         (5 + Math.random() * 7) + "s";
 
-
-    particleContainer.appendChild(
-        particle
-    );
+    particleBox.appendChild(p);
 
 
     setTimeout(
-        function(){
-
-            particle.remove();
-
-        },
+        () => p.remove(),
         13000
     );
-
 }
 
 
 setInterval(
     createParticle,
-    500
+    450
 );
 
 
-/* =====================================================
-   REVEAL PARTICLE BURST
-===================================================== */
+/* =========================================
+   BURST AFTER MIDNIGHT
+========================================= */
 
-function createRevealParticles(){
+function createBurst(){
 
-    for(
-        let i = 0;
-        i < 70;
-        i++
-    ){
+    for(let i=0;i<80;i++){
 
-        const particle =
+        const p =
             document.createElement("span");
 
-
-        particle.className =
+        p.className =
             "particle";
 
-
-        particle.textContent =
+        p.textContent =
             symbols[
                 Math.floor(
                     Math.random() *
@@ -1001,43 +1116,137 @@ function createRevealParticles(){
                 )
             ];
 
+        p.style.left =
+            (20 + Math.random() * 60) + "vw";
 
-        particle.style.left =
-            (30 + Math.random() * 40) + "vw";
+        p.style.bottom =
+            (10 + Math.random() * 30) + "vh";
 
-
-        particle.style.bottom =
-            (20 + Math.random() * 20) + "vh";
-
-
-        particle.style.fontSize =
+        p.style.fontSize =
             (12 + Math.random() * 25) + "px";
 
+        p.style.animationDuration =
+            (2 + Math.random() * 4) + "s";
 
-        particle.style.animationDuration =
-            (2 + Math.random() * 3) + "s";
-
-
-        particleContainer.appendChild(
-            particle
-        );
-
+        particleBox.appendChild(p);
 
         setTimeout(
-            function(){
-
-                particle.remove();
-
-            },
-            6000
+            () => p.remove(),
+            7000
         );
+    }
+}
 
+
+/* =========================================
+   SLIDER
+========================================= */
+
+const slides =
+    document.querySelectorAll(".slide");
+
+const dots =
+    document.querySelectorAll(".dot");
+
+const prevBtn =
+    document.getElementById("prevBtn");
+
+const nextBtn =
+    document.getElementById("nextBtn");
+
+let currentSlide = 0;
+
+
+function showSlide(index){
+
+    if(index < 0){
+        index = slides.length - 1;
     }
 
+    if(index >= slides.length){
+        index = 0;
+    }
+
+    slides.forEach(
+        slide => slide.classList.remove("active")
+    );
+
+    dots.forEach(
+        dot => dot.classList.remove("active")
+    );
+
+
+    slides[index].classList.add("active");
+
+    dots[index].classList.add("active");
+
+    currentSlide = index;
 }
+
+
+nextBtn.addEventListener(
+    "click",
+    () => showSlide(currentSlide + 1)
+);
+
+
+prevBtn.addEventListener(
+    "click",
+    () => showSlide(currentSlide - 1)
+);
+
+
+/* =========================================
+   SWIPE SUPPORT FOR MOBILE
+========================================= */
+
+let touchStartX = 0;
+let touchEndX = 0;
+
+
+birthday.addEventListener(
+    "touchstart",
+    function(event){
+
+        touchStartX =
+            event.changedTouches[0].screenX;
+
+    },
+    {passive:true}
+);
+
+
+birthday.addEventListener(
+    "touchend",
+    function(event){
+
+        touchEndX =
+            event.changedTouches[0].screenX;
+
+        const difference =
+            touchStartX - touchEndX;
+
+
+        if(Math.abs(difference) < 50){
+            return;
+        }
+
+
+        if(difference > 0){
+
+            showSlide(currentSlide + 1);
+
+        }else{
+
+            showSlide(currentSlide - 1);
+
+        }
+
+    },
+    {passive:true}
+);
 
 </script>
 
-
 </body>
-    </html>
+   </html>
