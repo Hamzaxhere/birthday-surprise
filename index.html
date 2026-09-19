@@ -1,431 +1,1195 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday My Janu ♡</title>
+
+<title>For My Bestie ♡</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+
+/* ==================================================
+   RESET
+================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
 
 body{
     min-height:100vh;
-    font-family:Georgia,serif;
-    color:white;
-    background:
-      radial-gradient(circle at 20% 20%,#55104f 0%,transparent 35%),
-      radial-gradient(circle at 80% 30%,#24105b 0%,transparent 35%),
-      linear-gradient(135deg,#08020d,#170719,#09030f);
     overflow-x:hidden;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    color:white;
+
+    background:
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(255,70,180,.35),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(255,120,210,.25),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 50% 90%,
+            rgba(255,20,150,.25),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            135deg,
+            #16020f,
+            #350522,
+            #170317,
+            #090008
+        );
 }
+
+
+/* ==================================================
+   PARTICLES
+================================================== */
 
 #particles{
     position:fixed;
     inset:0;
-    pointer-events:none;
+
     overflow:hidden;
+
+    pointer-events:none;
+
     z-index:0;
 }
 
 .particle{
     position:absolute;
-    bottom:-30px;
-    color:#ff80d4;
-    animation:up linear forwards;
-    text-shadow:0 0 15px #ff20bd;
+
+    bottom:-40px;
+
+    color:#ff8bd7;
+
+    text-shadow:
+        0 0 8px #ff2eb7,
+        0 0 18px #ff2eb7;
+
+    animation:
+        floating linear forwards;
+
+    opacity:.8;
 }
 
-@keyframes up{
-    to{
-        transform:translateY(-110vh) rotate(360deg);
+@keyframes floating{
+
+    0%{
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity:0;
+    }
+
+    15%{
+        opacity:.9;
+    }
+
+    100%{
+        transform:
+            translateY(-115vh)
+            rotate(360deg);
+
         opacity:0;
     }
 }
 
-/* COUNTDOWN */
+
+/* ==================================================
+   GLOW ORBS
+================================================== */
+
+.orb{
+    position:fixed;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    filter:blur(55px);
+
+    opacity:.25;
+
+    z-index:0;
+}
+
+.orb.one{
+    width:180px;
+    height:180px;
+
+    background:#ff1da9;
+
+    top:10%;
+    left:-70px;
+}
+
+.orb.two{
+    width:220px;
+    height:220px;
+
+    background:#ff69c9;
+
+    bottom:5%;
+    right:-90px;
+}
+
+
+/* ==================================================
+   COUNTDOWN
+================================================== */
 
 #countdown{
     min-height:100vh;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     padding:20px;
+
     position:relative;
+
     z-index:2;
 }
 
 .countCard{
+
     width:min(700px,100%);
+
     text-align:center;
-    padding:40px 18px;
-    border-radius:30px;
-    background:rgba(20,5,28,.8);
-    border:1px solid rgba(255,130,220,.35);
-    box-shadow:0 0 60px rgba(255,20,180,.18);
-}
 
-.heart{
-    font-size:75px;
-    color:#ff81d4;
-    animation:pulse 1.5s infinite;
-    text-shadow:0 0 30px #ff20b5;
-}
+    padding:
+        45px
+        20px;
 
-@keyframes pulse{
-    50%{transform:scale(1.12)}
+    border-radius:35px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(70,5,45,.82),
+            rgba(25,3,25,.88)
+        );
+
+    border:
+        1px solid
+        rgba(255,130,215,.45);
+
+    box-shadow:
+        0 0 80px
+        rgba(255,20,180,.2),
+
+        inset 0 0 50px
+        rgba(255,100,200,.04);
+
+    backdrop-filter:blur(15px);
 }
 
 .top{
+
+    color:#ffc1e8;
+
     font-size:10px;
+
     letter-spacing:4px;
-    color:#cba7c8;
+
     margin-bottom:20px;
 }
 
+.bigHeart{
+
+    font-size:78px;
+
+    color:#ff83d5;
+
+    text-shadow:
+        0 0 15px #ff159e,
+        0 0 45px #ff159e;
+
+    animation:
+        heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat{
+
+    50%{
+        transform:scale(1.13);
+    }
+}
+
 .countCard h1{
-    font-size:clamp(38px,10vw,65px);
-    font-style:italic;
+
+    font-size:
+        clamp(
+            38px,
+            10vw,
+            68px
+        );
+
     font-weight:normal;
-    color:#ffd8ef;
+
+    font-style:italic;
+
+    color:#ffe1f3;
+
+    text-shadow:
+        0 0 20px
+        rgba(255,60,190,.8);
 }
 
-.name{
-    font-size:clamp(28px,8vw,45px);
-    color:#ff8fd7;
+.bestieName{
+
     margin-top:8px;
+
+    font-size:
+        clamp(
+            30px,
+            8vw,
+            48px
+        );
+
+    color:#ff8fd7;
+
+    text-shadow:
+        0 0 18px
+        rgba(255,50,190,.7);
 }
 
-.sub{
-    margin:15px auto;
-    color:#cbb9ca;
+.subText{
+
+    margin-top:15px;
+
+    color:#e1bfd5;
+
     line-height:1.8;
+
     font-size:14px;
 }
 
+
+/* ==================================================
+   TIMER
+================================================== */
+
 .timer{
+
     display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:8px;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:9px;
+
     max-width:560px;
-    margin:30px auto 20px;
+
+    margin:
+        30px
+        auto
+        20px;
 }
 
-.time{
-    padding:16px 5px;
-    border-radius:18px;
-    background:rgba(255,50,190,.08);
-    border:1px solid rgba(255,130,220,.25);
+.timeBox{
+
+    padding:
+        17px
+        5px;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,50,190,.13),
+            rgba(80,5,60,.2)
+        );
+
+    border:
+        1px solid
+        rgba(255,130,215,.3);
+
+    box-shadow:
+        inset 0 0 20px
+        rgba(255,80,190,.03);
 }
 
-.num{
+.number{
+
     display:block;
-    font-size:clamp(25px,7vw,42px);
-    color:#ffe4f5;
+
+    font-size:
+        clamp(
+            25px,
+            7vw,
+            44px
+        );
+
+    color:#ffe6f5;
+
+    text-shadow:
+        0 0 15px #ff38bd;
 }
 
-.lab{
+.label{
+
     display:block;
-    font-size:8px;
-    color:#ad99aa;
-    letter-spacing:2px;
+
     margin-top:5px;
+
+    color:#c69fb9;
+
+    font-size:8px;
+
+    letter-spacing:2px;
 }
 
 .target{
-    color:#ff9ddd;
+
+    color:#ff9edc;
+
     font-size:11px;
+
     letter-spacing:2px;
 }
 
 
-/* BIRTHDAY */
+/* ==================================================
+   BIRTHDAY AREA
+================================================== */
 
 #birthday{
+
     display:none;
+
     min-height:100vh;
+
     position:relative;
+
     z-index:2;
-    padding:25px 15px 100px;
+
+    padding:
+        25px
+        15px
+        110px;
 }
 
 #birthday.show{
+
     display:block;
+
+    animation:
+        birthdayEnter
+        1s
+        ease;
 }
 
+@keyframes birthdayEnter{
+
+    from{
+        opacity:0;
+        transform:scale(.96);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+
+/* ==================================================
+   SLIDER
+================================================== */
+
 .slider{
-    width:min(750px,100%);
+
+    width:min(760px,100%);
+
     margin:auto;
 }
 
 .slide{
+
     display:none;
-    min-height:calc(100vh - 100px);
+
+    min-height:
+        calc(
+            100vh - 80px
+        );
+
     align-items:center;
+
     justify-content:center;
 }
 
 .slide.active{
+
     display:flex;
-    animation:appear .5s ease;
+
+    animation:
+        slideEnter
+        .7s
+        ease;
 }
 
-@keyframes appear{
+@keyframes slideEnter{
+
     from{
         opacity:0;
-        transform:translateX(30px);
+
+        transform:
+            translateX(35px)
+            scale(.98);
     }
+
     to{
         opacity:1;
-        transform:translateX(0);
+
+        transform:
+            translateX(0)
+            scale(1);
     }
 }
 
+
+/* ==================================================
+   CARD
+================================================== */
+
 .card{
+
     width:100%;
+
     text-align:center;
-    padding:35px 20px;
-    border-radius:30px;
-    background:rgba(22,5,31,.85);
-    border:1px solid rgba(255,130,220,.3);
-    box-shadow:0 0 60px rgba(255,20,180,.14);
+
+    padding:
+        35px
+        20px
+        45px;
+
+    border-radius:35px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(72,6,47,.88),
+            rgba(25,3,26,.9)
+        );
+
+    border:
+        1px solid
+        rgba(255,130,220,.4);
+
+    box-shadow:
+
+        0 0 80px
+        rgba(255,20,180,.17),
+
+        inset 0 0 50px
+        rgba(255,100,200,.035);
+
+    backdrop-filter:blur(15px);
 }
 
-.number{
-    color:#b895b5;
+
+/* ==================================================
+   SLIDE NUMBER
+================================================== */
+
+.slideNumber{
+
+    color:#d3a5c4;
+
     font-size:10px;
+
     letter-spacing:4px;
-    margin-bottom:20px;
+
+    margin-bottom:22px;
 }
 
-.icon{
-    font-size:65px;
+
+/* ==================================================
+   CUTE CHARACTER
+================================================== */
+
+.characters{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-end;
+
+    gap:10px;
+
     margin-bottom:15px;
-    animation:float 2s infinite;
+
+    min-height:120px;
 }
 
-@keyframes float{
-    50%{transform:translateY(-8px)}
+.character{
+
+    position:relative;
+
+    width:85px;
+    height:85px;
+
+    border-radius:48% 48% 45% 45%;
+
+    box-shadow:
+        0 0 25px
+        rgba(255,100,200,.25);
+
+    animation:
+        characterFloat
+        2s
+        ease-in-out
+        infinite;
 }
+
+.bear{
+
+    background:
+        linear-gradient(
+            145deg,
+            #f2b6ca,
+            #d875a4
+        );
+}
+
+.bunny{
+
+    background:
+        linear-gradient(
+            145deg,
+            #fff1f7,
+            #f0b7d4
+        );
+}
+
+.ear{
+
+    position:absolute;
+
+    width:25px;
+    height:40px;
+
+    border-radius:50%;
+
+    top:-22px;
+}
+
+.bear .ear{
+
+    background:#d875a4;
+}
+
+.bunny .ear{
+
+    background:#f5c5dc;
+}
+
+.ear.left{
+    left:8px;
+    transform:rotate(-25deg);
+}
+
+.ear.right{
+    right:8px;
+    transform:rotate(25deg);
+}
+
+.eye{
+
+    position:absolute;
+
+    width:7px;
+    height:9px;
+
+    border-radius:50%;
+
+    background:#351024;
+
+    top:37px;
+}
+
+.eye.left{
+    left:28px;
+}
+
+.eye.right{
+    right:28px;
+}
+
+.mouth{
+
+    position:absolute;
+
+    width:12px;
+    height:7px;
+
+    border-bottom:
+        2px solid
+        #7b2857;
+
+    border-radius:50%;
+
+    left:37px;
+    top:52px;
+}
+
+.heartSmall{
+
+    position:absolute;
+
+    color:#ff4dbd;
+
+    font-size:25px;
+
+    top:30px;
+    left:31px;
+
+    display:none;
+}
+
+.character:nth-child(2){
+
+    animation-delay:.4s;
+}
+
+@keyframes characterFloat{
+
+    50%{
+        transform:translateY(-9px);
+    }
+}
+
+
+/* ==================================================
+   TITLES
+================================================== */
 
 .card h1{
-    font-size:clamp(38px,10vw,62px);
+
+    font-size:
+        clamp(
+            38px,
+            10vw,
+            65px
+        );
+
     font-weight:normal;
+
     font-style:italic;
-    color:#ffd9ef;
-    text-shadow:0 0 20px #ff28b9;
+
+    color:#ffe0f2;
+
+    text-shadow:
+        0 0 22px #ff35bc;
 }
 
 .card h2{
-    color:#ff8dd6;
-    font-size:clamp(25px,7vw,42px);
+
     margin-top:8px;
+
+    font-size:
+        clamp(
+            28px,
+            8vw,
+            45px
+        );
+
+    color:#ff8ed6;
+
+    text-shadow:
+        0 0 15px
+        rgba(255,50,190,.6);
+}
+
+
+/* ==================================================
+   TEXT REVEAL
+================================================== */
+
+.revealLine{
+
+    opacity:0;
+
+    transform:
+        translateY(18px);
+
+    transition:
+        opacity
+        .65s
+        ease,
+
+        transform
+        .65s
+        ease;
+}
+
+.revealLine.visible{
+
+    opacity:1;
+
+    transform:
+        translateY(0);
 }
 
 .card p{
-    color:#ddccdb;
+
+    color:#ead3e0;
+
     font-size:15px;
+
     line-height:1.9;
-    margin:20px auto;
-    max-width:620px;
+
+    margin:
+        17px
+        auto;
+
+    max-width:630px;
 }
+
+
+/* ==================================================
+   DECOR
+================================================== */
 
 .decor{
-    color:#ff78cf;
+
+    color:#ff80d2;
+
     letter-spacing:7px;
-    margin:20px;
+
+    margin:
+        20px
+        0;
 }
+
+
+/* ==================================================
+   MESSAGE BOX
+================================================== */
 
 .message{
-    padding:20px 10px;
-    border-left:2px solid #ff67c6;
-    border-right:2px solid #ff67c6;
-    border-radius:20px;
+
+    margin-top:20px;
+
+    padding:
+        20px
+        12px;
+
+    border-left:
+        2px solid
+        #ff62c6;
+
+    border-right:
+        2px solid
+        #ff62c6;
+
+    border-radius:25px;
+
+    background:
+        rgba(255,50,190,.04);
 }
 
+
+/* ==================================================
+   DUAS
+================================================== */
+
 .duas{
+
     display:grid;
-    grid-template-columns:1fr 1fr;
+
+    grid-template-columns:
+        1fr 1fr;
+
     gap:10px;
+
     margin-top:20px;
 }
 
 .dua{
-    min-height:120px;
+
+    min-height:125px;
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
-    padding:15px 10px;
-    border-radius:20px;
-    background:rgba(255,50,190,.06);
-    border:1px solid rgba(255,120,210,.2);
-    color:#ddccdb;
+
+    padding:
+        15px
+        10px;
+
+    border-radius:22px;
+
+    background:
+        rgba(255,50,190,.07);
+
+    border:
+        1px solid
+        rgba(255,130,220,.22);
+
+    color:#e3cddb;
+
     font-size:13px;
+
     line-height:1.7;
+
+    opacity:0;
+
+    transform:
+        translateY(20px);
+
+    transition:
+        .7s
+        ease;
 }
+
+.slide.active .dua.visible{
+
+    opacity:1;
+
+    transform:
+        translateY(0);
+}
+
+
+/* ==================================================
+   CAKE
+================================================== */
 
 .cake{
+
     font-size:90px;
-    animation:cake 1.5s infinite;
+
+    margin:15px 0;
+
+    animation:
+        cakeBounce
+        1.5s
+        infinite;
 }
 
-@keyframes cake{
-    50%{transform:translateY(-10px) rotate(-3deg)}
+@keyframes cakeBounce{
+
+    50%{
+        transform:
+            translateY(-10px)
+            rotate(-3deg);
+    }
 }
 
 
-/* BUTTONS */
+/* ==================================================
+   FINAL HEART
+================================================== */
+
+.finalHeart{
+
+    font-size:75px;
+
+    color:#ff71ca;
+
+    text-shadow:
+        0 0 25px
+        #ff159e;
+
+    animation:
+        heartbeat
+        1.5s
+        infinite;
+}
+
+
+/* ==================================================
+   CONTROLS
+================================================== */
 
 .controls{
+
     position:fixed;
-    bottom:15px;
+
+    bottom:14px;
+
     left:0;
     right:0;
+
     z-index:20;
 
     display:flex;
+
     justify-content:center;
+
     align-items:center;
+
     gap:10px;
 }
 
 button{
+
     border:none;
+
     color:white;
-    background:#42133f;
-    border:1px solid #b94c9d;
-    padding:11px 20px;
-    border-radius:30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #791557,
+            #4b103e
+        );
+
+    border:
+        1px solid
+        #db5eb6;
+
+    padding:
+        11px
+        20px;
+
+    border-radius:50px;
+
     font-family:Georgia,serif;
+
     cursor:pointer;
-    font-size:13px;
+
+    box-shadow:
+        0 0 18px
+        rgba(255,50,190,.18);
+
+    transition:.25s;
+}
+
+button:hover{
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 0 25px
+        rgba(255,50,190,.35);
 }
 
 button:active{
-    transform:scale(.95);
+
+    transform:
+        scale(.94);
 }
 
 .dots{
+
     display:flex;
+
     gap:6px;
 }
 
 .dot{
+
     width:7px;
     height:7px;
+
     border-radius:50%;
-    background:#60465d;
+
+    background:#67435e;
+
+    transition:.3s;
 }
 
 .dot.active{
-    background:#ff78cf;
-    box-shadow:0 0 10px #ff20b5;
+
+    background:#ff78ce;
+
+    box-shadow:
+        0 0 10px
+        #ff20b5;
 }
 
 
-/* MOBILE */
+/* ==================================================
+   MOBILE
+================================================== */
 
 @media(max-width:600px){
 
     .countCard{
-        padding:35px 12px;
+
+        padding:
+            35px
+            13px;
     }
 
     .timer{
+
         gap:5px;
     }
 
-    .time{
-        padding:14px 3px;
+    .timeBox{
+
+        padding:
+            14px
+            3px;
     }
 
-    .lab{
+    .label{
+
         font-size:7px;
+
         letter-spacing:1px;
     }
 
     .card{
-        padding:30px 14px 90px;
+
+        padding:
+            28px
+            13px
+            90px;
     }
 
     .card p{
+
         font-size:14px;
+
+        line-height:1.85;
+    }
+
+    .characters{
+
+        transform:
+            scale(.9);
     }
 
     .duas{
+
         gap:7px;
     }
 
     .dua{
-        font-size:12px;
+
         min-height:125px;
-        padding:10px 7px;
+
+        font-size:12px;
+
+        padding:
+            10px
+            7px;
     }
 
     button{
-        padding:9px 15px;
+
+        padding:
+            9px
+            15px;
+
         font-size:12px;
     }
 }
+
 </style>
 </head>
 
+
 <body>
+
+
+<!-- GLOW -->
+
+<div class="orb one"></div>
+<div class="orb two"></div>
 
 <div id="particles"></div>
 
 
-<!-- COUNTDOWN -->
+<!-- ==================================================
+     COUNTDOWN
+================================================== -->
 
 <section id="countdown">
 
 <div class="countCard">
 
 <div class="top">
-✦ A LITTLE SURPRISE FOR YOU ✦
+✦ A LITTLE SURPRISE FOR MY BESTIE ✦
 </div>
 
-<div class="heart">♡</div>
+<div class="bigHeart">
+♡
+</div>
 
 <h1>
 Something Special
 </h1>
 
-<div class="name">
-𝑴𝒚 𝑱𝒂𝒏𝒖 ♡
+<div class="bestieName">
+𝑴𝒚 𝑩𝒆𝒔𝒕𝒊𝒆 ♡
 </div>
 
-<div class="sub">
-Your birthday surprise is waiting... 🥹
+<div class="subText">
+
+Your special birthday surprise
+is waiting for you... 🥹💗
+
 <br>
-The doors will open at midnight ✨
+
+Every second is taking us
+closer to your special moment. ✨
+
 </div>
+
 
 <div class="timer">
 
-<div class="time">
-<span id="days" class="num">00</span>
-<span class="lab">DAYS</span>
+<div class="timeBox">
+<span id="days" class="number">00</span>
+<span class="label">DAYS</span>
 </div>
 
-<div class="time">
-<span id="hours" class="num">00</span>
-<span class="lab">HOURS</span>
+<div class="timeBox">
+<span id="hours" class="number">00</span>
+<span class="label">HOURS</span>
 </div>
 
-<div class="time">
-<span id="minutes" class="num">00</span>
-<span class="lab">MINUTES</span>
+<div class="timeBox">
+<span id="minutes" class="number">00</span>
+<span class="label">MINUTES</span>
 </div>
 
-<div class="time">
-<span id="seconds" class="num">00</span>
-<span class="lab">SECONDS</span>
+<div class="timeBox">
+<span id="seconds" class="number">00</span>
+<span class="label">SECONDS</span>
 </div>
 
 </div>
 
 <div class="target">
-✦ 19 SEPTEMBER • 12:00 AM PAKISTAN TIME ✦
+✦ 19 SEPTEMBER • 12:00 AM PKT ✦
 </div>
 
 </div>
@@ -433,48 +1197,84 @@ The doors will open at midnight ✨
 </section>
 
 
-<!-- BIRTHDAY -->
+
+<!-- ==================================================
+     BIRTHDAY
+================================================== -->
 
 <section id="birthday">
 
 <div class="slider">
 
 
-<!-- SLIDE 1 -->
+<!-- ==================================================
+     SLIDE 1
+================================================== -->
 
 <div class="slide active">
 
 <div class="card">
 
-<div class="number">01 / 05</div>
+<div class="slideNumber">
+01 / 05
+</div>
 
-<div class="icon">🎀</div>
+
+<div class="characters">
+
+<div class="character bear">
+
+<div class="ear left"></div>
+<div class="ear right"></div>
+
+<div class="eye left"></div>
+<div class="eye right"></div>
+
+<div class="mouth"></div>
+
+</div>
+
+
+<div class="character bunny">
+
+<div class="ear left"></div>
+<div class="ear right"></div>
+
+<div class="eye left"></div>
+<div class="eye right"></div>
+
+<div class="mouth"></div>
+
+</div>
+
+</div>
+
 
 <h1>
 Happy Birthday
 </h1>
 
 <h2>
-𝑴𝒚 𝑱𝒂𝒏𝒖 ♡
+𝑴𝒚 𝑩𝒆𝒔𝒕𝒊𝒆 ♡
 </h2>
 
 <div class="decor">
 ♡ ✦ ♡
 </div>
 
-<p>
-Finally the wait is over! 🥹❤️
+
+<p class="revealLine">
+Finally... your special day is here! 🥹💗
 </p>
 
-<p>
-May this beautiful day bring you
-countless smiles, peaceful moments
-and memories that stay close to your heart. 🌸
+<p class="revealLine">
+May your day be filled with beautiful
+smiles, peaceful moments and happiness. 🌸
 </p>
 
-<p>
-May the coming year of your life
-be even more beautiful than the last one. ✨
+<p class="revealLine">
+And may this new chapter of your life
+bring you countless beautiful memories. ✨
 </p>
 
 </div>
@@ -482,15 +1282,48 @@ be even more beautiful than the last one. ✨
 </div>
 
 
-<!-- SLIDE 2 -->
+
+<!-- ==================================================
+     SLIDE 2
+================================================== -->
 
 <div class="slide">
 
 <div class="card">
 
-<div class="number">02 / 05</div>
+<div class="slideNumber">
+02 / 05
+</div>
 
-<div class="icon">💌</div>
+
+<div class="characters">
+
+<div class="character bear">
+
+<div class="ear left"></div>
+<div class="ear right"></div>
+
+<div class="eye left"></div>
+<div class="eye right"></div>
+
+<div class="mouth"></div>
+
+</div>
+
+<div class="character bunny">
+
+<div class="ear left"></div>
+<div class="ear right"></div>
+
+<div class="eye left"></div>
+<div class="eye right"></div>
+
+<div class="mouth"></div>
+
+</div>
+
+</div>
+
 
 <h1>
 A Little Message
@@ -500,22 +1333,27 @@ A Little Message
 ✦ ── ♡ ── ✦
 </div>
 
+
 <div class="message">
 
-<p>
-Some people enter our lives
-and simply make ordinary moments
+<p class="revealLine">
+Some people make ordinary moments
 feel a little more special. 🌷
 </p>
 
-<p>
-On your birthday, I hope you receive
-the same kindness, happiness and
-beautiful moments that you deserve. 💗
+<p class="revealLine">
+Some memories become precious
+simply because of the people in them. 💕
 </p>
 
-<p>
-Keep smiling and keep shining. ✨
+<p class="revealLine">
+And some friendships become
+beautiful parts of our lives. 🥹
+</p>
+
+<p class="revealLine">
+So today, I simply wish you
+a life full of happiness and peace. 💗
 </p>
 
 </div>
@@ -525,19 +1363,57 @@ Keep smiling and keep shining. ✨
 </div>
 
 
-<!-- SLIDE 3 -->
+
+<!-- ==================================================
+     SLIDE 3
+================================================== -->
 
 <div class="slide">
 
 <div class="card">
 
-<div class="number">03 / 05</div>
+<div class="slideNumber">
+03 / 05
+</div>
 
-<div class="icon">🤲</div>
+
+<div class="characters">
+
+<div class="character bunny">
+
+<div class="ear left"></div>
+<div class="ear right"></div>
+
+<div class="eye left"></div>
+<div class="eye right"></div>
+
+<div class="mouth"></div>
+
+</div>
+
+<div class="character bear">
+
+<div class="ear left"></div>
+<div class="ear right"></div>
+
+<div class="eye left"></div>
+<div class="eye right"></div>
+
+<div class="mouth"></div>
+
+</div>
+
+</div>
+
 
 <h1>
 Birthday Duas
 </h1>
+
+<div class="decor">
+🤲 ♡ 🤲
+</div>
+
 
 <div class="duas">
 
@@ -568,7 +1444,7 @@ full of beautiful memories.
 
 <div class="dua">
 💗 May Allah keep
-smiles on your face.
+beautiful smiles on your face.
 </div>
 
 </div>
@@ -578,342 +1454,107 @@ smiles on your face.
 </div>
 
 
-<!-- SLIDE 4 -->
+
+<!-- ==================================================
+     SLIDE 4
+================================================== -->
 
 <div class="slide">
 
 <div class="card">
 
-<div class="number">04 / 05</div>
+<div class="slideNumber">
+04 / 05
+</div>
 
-<div class="icon">🌙</div>
+
+<div class="characters">
+
+<div class="character bear">
+
+<div class="ear left"></div>
+<div class="ear right"></div>
+
+<div class="eye left"></div>
+<div class="eye right"></div>
+
+<div class="mouth"></div>
+
+</div>
+
+<div class="character bunny">
+
+<div class="ear left"></div>
+<div class="ear right"></div>
+
+<div class="eye left"></div>
+<div class="eye right"></div>
+
+<div class="mouth"></div>
+
+</div>
+
+</div>
+
 
 <h1>
 For Your Future
 </h1>
 
 <div class="decor">
-✦ ✧ ✦
-</div>
-
-<p>
-May every difficult road become easier,
-every dream find its way toward reality,
-and every new morning bring something
-beautiful with it. ✨
-</p>
-
-<p>
-May Allah give you strength when life
-gets difficult, patience when you need it,
-and peace in your heart. 🤲
-</p>
-
-<p>
-May your future be filled with
-good people, beautiful memories
-and countless reasons to smile. 🌸
-</p>
-
-</div>
-
+🌙 ✦ 🌸
 </div>
 
 
-<!-- SLIDE 5 -->
+<p class="revealLine">
+May every difficult road become easier. 🤲
+</p>
+
+<p class="revealLine">
+May every dream find its way
+towards reality. ✨
+</p>
+
+<p class="revealLine">
+May every morning bring
+a new reason to smile. 🌷
+</p>
+
+<p class="revealLine">
+May Allah give you strength,
+patience and peace in every chapter. 🕊️
+</p>
+
+<p class="revealLine">
+And may your future be filled with
+beautiful people and beautiful memories. 💗
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- ==================================================
+     SLIDE 5
+================================================== -->
 
 <div class="slide">
 
 <div class="card">
 
-<div class="number">05 / 05</div>
-
-<div class="icon">🎂</div>
-
-<h1>
-Once Again
-</h1>
-
-<h2>
-𝑯𝒂𝒑𝒑𝒚 𝑩𝒊𝒓𝒕𝒉𝒅𝒂𝒚 ♡
-</h2>
-
-<div class="cake">
-🎂
-</div>
-
-<p>
-May this birthday become the beginning
-of another beautiful chapter of your life. 🌷
-</p>
-
-<p>
-May your days be filled with happiness,
-peace, laughter and beautiful memories. ❤️
-</p>
-
-<div class="decor">
-♡ ── ✦ ── ♡
-</div>
-
-<p>
-Stay happy. Stay blessed.
-And keep that beautiful smile. 🥹✨
-</p>
-
-</div>
-
+<div class="slideNumber">
+05 / 05
 </div>
 
 
-</div>
+<div class="characters">
 
+<div class="character bunny">
 
-<!-- CONTROLS -->
+<div class="ear left"></div>
+<div class="ear right"></div>
 
-<div class="controls">
-
-<button onclick="previousSlide()">
-← Prev
-</button>
-
-<div class="dots">
-
-<span class="dot active" id="dot0"></span>
-<span class="dot" id="dot1"></span>
-<span class="dot" id="dot2"></span>
-<span class="dot" id="dot3"></span>
-<span class="dot" id="dot4"></span>
-
-</div>
-
-<button onclick="nextSlide()">
-Next →
-</button>
-
-</div>
-
-</section>
-
-
-<script>
-
-/* =========================================
-   BIRTHDAY TIME
-   19 SEPTEMBER 2026
-   12:00 AM PAKISTAN TIME
-========================================= */
-
-var targetTime =
-new Date("2026-09-18T19:00:00Z").getTime();
-
-
-/* COUNTDOWN */
-
-function updateCountdown(){
-
-    var now = Date.now();
-
-    var difference =
-    targetTime - now;
-
-    if(difference <= 0){
-
-        document.getElementById("countdown")
-        .style.display = "none";
-
-        document.getElementById("birthday")
-        .style.display = "block";
-
-        return;
-    }
-
-    var total =
-    Math.floor(difference / 1000);
-
-    var d =
-    Math.floor(total / 86400);
-
-    var h =
-    Math.floor((total % 86400) / 3600);
-
-    var m =
-    Math.floor((total % 3600) / 60);
-
-    var s =
-    total % 60;
-
-
-    document.getElementById("days")
-    .innerHTML = String(d).padStart(2,"0");
-
-    document.getElementById("hours")
-    .innerHTML = String(h).padStart(2,"0");
-
-    document.getElementById("minutes")
-    .innerHTML = String(m).padStart(2,"0");
-
-    document.getElementById("seconds")
-    .innerHTML = String(s).padStart(2,"0");
-}
-
-
-updateCountdown();
-
-setInterval(updateCountdown,1000);
-
-
-/* =========================================
-   SLIDES
-========================================= */
-
-var currentSlide = 0;
-
-var slides =
-document.querySelectorAll(".slide");
-
-
-function showSlide(index){
-
-    if(index < 0){
-        index = slides.length - 1;
-    }
-
-    if(index >= slides.length){
-        index = 0;
-    }
-
-
-    for(var i = 0; i < slides.length; i++){
-
-        slides[i].classList.remove("active");
-
-        document
-        .getElementById("dot" + i)
-        .classList.remove("active");
-    }
-
-
-    slides[index].classList.add("active");
-
-    document
-    .getElementById("dot" + index)
-    .classList.add("active");
-
-
-    currentSlide = index;
-}
-
-
-function nextSlide(){
-
-    showSlide(currentSlide + 1);
-
-}
-
-
-function previousSlide(){
-
-    showSlide(currentSlide - 1);
-
-}
-
-
-/* =========================================
-   SWIPE
-========================================= */
-
-var startX = 0;
-
-document
-.getElementById("birthday")
-.addEventListener("touchstart",function(e){
-
-    startX =
-    e.changedTouches[0].screenX;
-
-},{passive:true});
-
-
-document
-.getElementById("birthday")
-.addEventListener("touchend",function(e){
-
-    var endX =
-    e.changedTouches[0].screenX;
-
-    var distance =
-    startX - endX;
-
-
-    if(Math.abs(distance) < 50){
-        return;
-    }
-
-
-    if(distance > 0){
-        nextSlide();
-    }
-    else{
-        previousSlide();
-    }
-
-},{passive:true});
-
-
-/* =========================================
-   FLOATING HEARTS
-========================================= */
-
-var symbols = [
-    "♡",
-    "♥",
-    "✦",
-    "✧",
-    "✨"
-];
-
-
-function makeParticle(){
-
-    var p =
-    document.createElement("span");
-
-    p.className =
-    "particle";
-
-    p.innerHTML =
-    symbols[
-        Math.floor(
-            Math.random() * symbols.length
-        )
-    ];
-
-    p.style.left =
-    Math.random() * 100 + "vw";
-
-    p.style.fontSize =
-    (10 + Math.random() * 22) + "px";
-
-    p.style.animationDuration =
-    (5 + Math.random() * 6) + "s";
-
-    document
-    .getElementById("particles")
-    .appendChild(p);
-
-
-    setTimeout(function(){
-
-        p.remove();
-
-    },13000);
-}
-
-
-setInterval(makeParticle,500);
-
-</script>
-
-</body>
-    </html>
+<div class="eye left"></div>
+    
