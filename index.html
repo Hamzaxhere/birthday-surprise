@@ -1,1560 +1,794 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>For My Bestie ♡</title>
+<meta name="theme-color" content="#180016">
+<title>A Little Surprise For My Bestie 💗</title>
 
 <style>
-
-/* ==================================================
-   RESET
-================================================== */
-
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
 }
 
-html{
-    scroll-behavior:smooth;
+html,body{
+    width:100%;
+    min-height:100%;
 }
 
 body{
-    min-height:100vh;
-    overflow-x:hidden;
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    color:white;
-
+    font-family:Georgia, "Times New Roman", serif;
     background:
-        radial-gradient(
-            circle at 15% 15%,
-            rgba(255,70,180,.35),
-            transparent 30%
-        ),
-
-        radial-gradient(
-            circle at 85% 20%,
-            rgba(255,120,210,.25),
-            transparent 30%
-        ),
-
-        radial-gradient(
-            circle at 50% 90%,
-            rgba(255,20,150,.25),
-            transparent 35%
-        ),
-
-        linear-gradient(
-            135deg,
-            #16020f,
-            #350522,
-            #170317,
-            #090008
-        );
+        radial-gradient(circle at 50% 20%, #7d145f 0%, #39072f 38%, #15000f 100%);
+    color:#fff;
+    overflow-x:hidden;
 }
 
-
-/* ==================================================
-   PARTICLES
-================================================== */
-
-#particles{
+/* floating hearts */
+.floating{
     position:fixed;
     inset:0;
-
+    pointer-events:none;
     overflow:hidden;
-
-    pointer-events:none;
-
     z-index:0;
 }
 
-.particle{
+.floating span{
     position:absolute;
-
-    bottom:-40px;
-
-    color:#ff8bd7;
-
-    text-shadow:
-        0 0 8px #ff2eb7,
-        0 0 18px #ff2eb7;
-
-    animation:
-        floating linear forwards;
-
-    opacity:.8;
+    bottom:-50px;
+    font-size:22px;
+    opacity:.7;
+    animation:floatUp linear infinite;
 }
 
-@keyframes floating{
+.floating span:nth-child(1){left:8%;animation-duration:9s}
+.floating span:nth-child(2){left:22%;animation-duration:12s;animation-delay:2s}
+.floating span:nth-child(3){left:38%;animation-duration:10s;animation-delay:4s}
+.floating span:nth-child(4){left:55%;animation-duration:13s;animation-delay:1s}
+.floating span:nth-child(5){left:72%;animation-duration:11s;animation-delay:3s}
+.floating span:nth-child(6){left:88%;animation-duration:14s;animation-delay:5s}
 
-    0%{
-        transform:
-            translateY(0)
-            rotate(0deg);
-
+@keyframes floatUp{
+    from{
+        transform:translateY(0) rotate(0deg);
         opacity:0;
     }
-
-    15%{
-        opacity:.9;
-    }
-
-    100%{
-        transform:
-            translateY(-115vh)
-            rotate(360deg);
-
+    15%{opacity:.7}
+    to{
+        transform:translateY(-115vh) rotate(360deg);
         opacity:0;
     }
 }
 
-
-/* ==================================================
-   GLOW ORBS
-================================================== */
-
-.orb{
-    position:fixed;
-
-    border-radius:50%;
-
-    pointer-events:none;
-
-    filter:blur(55px);
-
-    opacity:.25;
-
-    z-index:0;
+/* main */
+.page{
+    position:relative;
+    z-index:1;
+    width:100%;
+    max-width:650px;
+    margin:auto;
+    padding:22px 15px 40px;
 }
 
-.orb.one{
-    width:180px;
-    height:180px;
-
-    background:#ff1da9;
-
-    top:10%;
-    left:-70px;
+/* header */
+.top{
+    text-align:center;
+    padding:15px 5px 20px;
 }
 
-.orb.two{
-    width:220px;
-    height:220px;
-
-    background:#ff69c9;
-
-    bottom:5%;
-    right:-90px;
+.small-title{
+    color:#ffd8f2;
+    font-size:14px;
+    letter-spacing:6px;
+    line-height:1.8;
+    text-transform:uppercase;
 }
 
-
-/* ==================================================
-   COUNTDOWN
-================================================== */
-
-#countdown{
-    min-height:100vh;
-
+.neon-heart{
+    width:95px;
+    height:95px;
+    margin:22px auto 15px;
     display:flex;
-
     align-items:center;
     justify-content:center;
-
-    padding:20px;
-
-    position:relative;
-
-    z-index:2;
-}
-
-.countCard{
-
-    width:min(700px,100%);
-
-    text-align:center;
-
-    padding:
-        45px
-        20px;
-
-    border-radius:35px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(70,5,45,.82),
-            rgba(25,3,25,.88)
-        );
-
-    border:
-        1px solid
-        rgba(255,130,215,.45);
-
-    box-shadow:
-        0 0 80px
-        rgba(255,20,180,.2),
-
-        inset 0 0 50px
-        rgba(255,100,200,.04);
-
-    backdrop-filter:blur(15px);
-}
-
-.top{
-
-    color:#ffc1e8;
-
-    font-size:10px;
-
-    letter-spacing:4px;
-
-    margin-bottom:20px;
-}
-
-.bigHeart{
-
-    font-size:78px;
-
-    color:#ff83d5;
-
+    font-size:70px;
+    color:#ff62c9;
     text-shadow:
-        0 0 15px #ff159e,
-        0 0 45px #ff159e;
-
-    animation:
-        heartbeat 1.5s infinite;
+        0 0 8px #ff62c9,
+        0 0 20px #ff159f,
+        0 0 40px #ff159f;
+    animation:heartbeat 1.6s infinite;
 }
 
 @keyframes heartbeat{
-
-    50%{
-        transform:scale(1.13);
-    }
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.12)}
 }
 
-.countCard h1{
-
-    font-size:
-        clamp(
-            38px,
-            10vw,
-            68px
-        );
-
-    font-weight:normal;
-
+.main-title{
+    font-size:48px;
+    line-height:1.05;
     font-style:italic;
-
-    color:#ffe1f3;
-
-    text-shadow:
-        0 0 20px
-        rgba(255,60,190,.8);
+    text-shadow:0 0 18px rgba(255,105,210,.5);
 }
 
-.bestieName{
-
-    margin-top:8px;
-
-    font-size:
-        clamp(
-            30px,
-            8vw,
-            48px
-        );
-
-    color:#ff8fd7;
-
-    text-shadow:
-        0 0 18px
-        rgba(255,50,190,.7);
-}
-
-.subText{
-
+.bestie-title{
     margin-top:15px;
-
-    color:#e1bfd5;
-
-    line-height:1.8;
-
-    font-size:14px;
+    color:#ff86d5;
+    font-size:30px;
+    font-style:italic;
+    text-shadow:0 0 15px rgba(255,65,190,.8);
 }
 
-
-/* ==================================================
-   TIMER
-================================================== */
-
-.timer{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
-    gap:9px;
-
-    max-width:560px;
-
-    margin:
-        30px
-        auto
-        20px;
-}
-
-.timeBox{
-
-    padding:
-        17px
-        5px;
-
-    border-radius:20px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,50,190,.13),
-            rgba(80,5,60,.2)
-        );
-
-    border:
-        1px solid
-        rgba(255,130,215,.3);
-
-    box-shadow:
-        inset 0 0 20px
-        rgba(255,80,190,.03);
-}
-
-.number{
-
-    display:block;
-
-    font-size:
-        clamp(
-            25px,
-            7vw,
-            44px
-        );
-
-    color:#ffe6f5;
-
-    text-shadow:
-        0 0 15px #ff38bd;
-}
-
-.label{
-
-    display:block;
-
-    margin-top:5px;
-
-    color:#c69fb9;
-
-    font-size:8px;
-
-    letter-spacing:2px;
-}
-
-.target{
-
-    color:#ff9edc;
-
-    font-size:11px;
-
-    letter-spacing:2px;
-}
-
-
-/* ==================================================
-   BIRTHDAY AREA
-================================================== */
-
-#birthday{
-
-    display:none;
-
-    min-height:100vh;
-
-    position:relative;
-
-    z-index:2;
-
-    padding:
-        25px
-        15px
-        110px;
-}
-
-#birthday.show{
-
-    display:block;
-
-    animation:
-        birthdayEnter
-        1s
-        ease;
-}
-
-@keyframes birthdayEnter{
-
-    from{
-        opacity:0;
-        transform:scale(.96);
-    }
-
-    to{
-        opacity:1;
-        transform:scale(1);
-    }
-}
-
-
-/* ==================================================
-   SLIDER
-================================================== */
-
-.slider{
-
-    width:min(760px,100%);
-
-    margin:auto;
-}
-
-.slide{
-
-    display:none;
-
-    min-height:
-        calc(
-            100vh - 80px
-        );
-
-    align-items:center;
-
-    justify-content:center;
-}
-
-.slide.active{
-
-    display:flex;
-
-    animation:
-        slideEnter
-        .7s
-        ease;
-}
-
-@keyframes slideEnter{
-
-    from{
-        opacity:0;
-
-        transform:
-            translateX(35px)
-            scale(.98);
-    }
-
-    to{
-        opacity:1;
-
-        transform:
-            translateX(0)
-            scale(1);
-    }
-}
-
-
-/* ==================================================
-   CARD
-================================================== */
-
+/* card */
 .card{
-
-    width:100%;
-
-    text-align:center;
-
-    padding:
-        35px
-        20px
-        45px;
-
-    border-radius:35px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(72,6,47,.88),
-            rgba(25,3,26,.9)
-        );
-
-    border:
-        1px solid
-        rgba(255,130,220,.4);
-
+    background:rgba(28,0,23,.74);
+    border:1px solid rgba(255,105,210,.4);
+    border-radius:34px;
+    padding:25px 18px 30px;
     box-shadow:
-
-        0 0 80px
-        rgba(255,20,180,.17),
-
-        inset 0 0 50px
-        rgba(255,100,200,.035);
-
-    backdrop-filter:blur(15px);
+        0 0 30px rgba(255,0,174,.22),
+        inset 0 0 30px rgba(255,0,174,.05);
+    backdrop-filter:blur(8px);
 }
 
-
-/* ==================================================
-   SLIDE NUMBER
-================================================== */
-
-.slideNumber{
-
-    color:#d3a5c4;
-
-    font-size:10px;
-
-    letter-spacing:4px;
-
-    margin-bottom:22px;
-}
-
-
-/* ==================================================
-   CUTE CHARACTER
-================================================== */
-
+/* characters */
 .characters{
-
     display:flex;
-
     justify-content:center;
-
-    align-items:flex-end;
-
-    gap:10px;
-
-    margin-bottom:15px;
-
-    min-height:120px;
+    align-items:end;
+    gap:25px;
+    height:125px;
+    margin-bottom:5px;
 }
 
 .character{
-
     position:relative;
-
-    width:85px;
-    height:85px;
-
-    border-radius:48% 48% 45% 45%;
-
-    box-shadow:
-        0 0 25px
-        rgba(255,100,200,.25);
-
-    animation:
-        characterFloat
-        2s
-        ease-in-out
-        infinite;
+    width:82px;
+    height:90px;
+    border-radius:45% 45% 42% 42%;
+    box-shadow:0 8px 18px rgba(0,0,0,.35);
 }
 
-.bear{
+.character:before,
+.character:after{
+    content:"";
+    position:absolute;
+    top:-13px;
+    width:32px;
+    height:32px;
+    border-radius:50%;
+}
 
-    background:
-        linear-gradient(
-            145deg,
-            #f2b6ca,
-            #d875a4
-        );
+.character:before{left:5px}
+.character:after{right:5px}
+
+.bear{
+    background:#d99a73;
+}
+
+.bear:before,
+.bear:after{
+    background:#c9825b;
 }
 
 .bunny{
-
-    background:
-        linear-gradient(
-            145deg,
-            #fff1f7,
-            #f0b7d4
-        );
+    background:#f4dce9;
+    border-radius:48% 48% 42% 42%;
 }
 
-.ear{
-
-    position:absolute;
-
-    width:25px;
-    height:40px;
-
+.bunny:before,
+.bunny:after{
+    width:18px;
+    height:48px;
+    top:-39px;
     border-radius:50%;
-
-    top:-22px;
+    background:#f4dce9;
 }
 
-.bear .ear{
-
-    background:#d875a4;
-}
-
-.bunny .ear{
-
-    background:#f5c5dc;
-}
-
-.ear.left{
-    left:8px;
-    transform:rotate(-25deg);
-}
-
-.ear.right{
-    right:8px;
-    transform:rotate(25deg);
+.face{
+    position:absolute;
+    left:50%;
+    top:42%;
+    transform:translate(-50%,-50%);
+    width:55px;
+    height:35px;
 }
 
 .eye{
-
     position:absolute;
-
     width:7px;
     height:9px;
-
     border-radius:50%;
-
-    background:#351024;
-
-    top:37px;
+    background:#24101f;
+    top:7px;
 }
 
-.eye.left{
-    left:28px;
-}
-
-.eye.right{
-    right:28px;
-}
+.eye.left{left:8px}
+.eye.right{right:8px}
 
 .mouth{
-
     position:absolute;
-
-    width:12px;
-    height:7px;
-
-    border-bottom:
-        2px solid
-        #7b2857;
-
+    width:15px;
+    height:8px;
+    border-bottom:2px solid #4a2039;
     border-radius:50%;
-
-    left:37px;
-    top:52px;
+    left:50%;
+    transform:translateX(-50%);
+    bottom:2px;
 }
 
-.heartSmall{
+/* slides */
+.slides{
+    position:relative;
+    min-height:410px;
+}
 
-    position:absolute;
-
-    color:#ff4dbd;
-
-    font-size:25px;
-
-    top:30px;
-    left:31px;
-
+.slide{
     display:none;
+    text-align:center;
+    animation:slideIn .5s ease;
 }
 
-.character:nth-child(2){
-
-    animation-delay:.4s;
+.slide.active{
+    display:block;
 }
 
-@keyframes characterFloat{
-
-    50%{
-        transform:translateY(-9px);
+@keyframes slideIn{
+    from{
+        opacity:0;
+        transform:translateX(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateX(0);
     }
 }
 
-
-/* ==================================================
-   TITLES
-================================================== */
-
-.card h1{
-
-    font-size:
-        clamp(
-            38px,
-            10vw,
-            65px
-        );
-
-    font-weight:normal;
-
-    font-style:italic;
-
-    color:#ffe0f2;
-
-    text-shadow:
-        0 0 22px #ff35bc;
+.slide h2{
+    color:#ff91da;
+    font-size:29px;
+    margin:10px 0 22px;
+    text-shadow:0 0 15px rgba(255,80,200,.55);
 }
 
-.card h2{
-
-    margin-top:8px;
-
-    font-size:
-        clamp(
-            28px,
-            8vw,
-            45px
-        );
-
-    color:#ff8ed6;
-
-    text-shadow:
-        0 0 15px
-        rgba(255,50,190,.6);
+.slide p{
+    color:#ffe8f7;
+    font-size:19px;
+    line-height:1.8;
+    margin:10px auto;
+    max-width:520px;
 }
 
-
-/* ==================================================
-   TEXT REVEAL
-================================================== */
-
-.revealLine{
-
+/* line reveal */
+.reveal-line{
     opacity:0;
-
-    transform:
-        translateY(18px);
-
-    transition:
-        opacity
-        .65s
-        ease,
-
-        transform
-        .65s
-        ease;
+    transform:translateY(12px);
+    transition:all .65s ease;
 }
 
-.revealLine.visible{
-
+.reveal-line.show{
     opacity:1;
-
-    transform:
-        translateY(0);
+    transform:translateY(0);
 }
 
-.card p{
-
-    color:#ead3e0;
-
-    font-size:15px;
-
-    line-height:1.9;
-
-    margin:
-        17px
-        auto;
-
-    max-width:630px;
-}
-
-
-/* ==================================================
-   DECOR
-================================================== */
-
-.decor{
-
-    color:#ff80d2;
-
-    letter-spacing:7px;
-
-    margin:
-        20px
-        0;
-}
-
-
-/* ==================================================
-   MESSAGE BOX
-================================================== */
-
-.message{
-
-    margin-top:20px;
-
-    padding:
-        20px
-        12px;
-
-    border-left:
-        2px solid
-        #ff62c6;
-
-    border-right:
-        2px solid
-        #ff62c6;
-
-    border-radius:25px;
-
-    background:
-        rgba(255,50,190,.04);
-}
-
-
-/* ==================================================
-   DUAS
-================================================== */
-
-.duas{
-
-    display:grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap:10px;
-
-    margin-top:20px;
-}
-
+/* dua */
 .dua{
-
-    min-height:125px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    padding:
-        15px
-        10px;
-
-    border-radius:22px;
-
-    background:
-        rgba(255,50,190,.07);
-
-    border:
-        1px solid
-        rgba(255,130,220,.22);
-
-    color:#e3cddb;
-
-    font-size:13px;
-
+    margin:22px auto 0;
+    padding:16px 14px;
+    border-radius:20px;
+    border:1px solid rgba(255,123,211,.3);
+    background:rgba(255,0,160,.07);
+    color:#ffd4ed;
+    font-size:17px;
     line-height:1.7;
-
-    opacity:0;
-
-    transform:
-        translateY(20px);
-
-    transition:
-        .7s
-        ease;
 }
 
-.slide.active .dua.visible{
-
-    opacity:1;
-
-    transform:
-        translateY(0);
-}
-
-
-/* ==================================================
-   CAKE
-================================================== */
-
-.cake{
-
-    font-size:90px;
-
-    margin:15px 0;
-
-    animation:
-        cakeBounce
-        1.5s
-        infinite;
-}
-
-@keyframes cakeBounce{
-
-    50%{
-        transform:
-            translateY(-10px)
-            rotate(-3deg);
-    }
-}
-
-
-/* ==================================================
-   FINAL HEART
-================================================== */
-
-.finalHeart{
-
-    font-size:75px;
-
-    color:#ff71ca;
-
-    text-shadow:
-        0 0 25px
-        #ff159e;
-
-    animation:
-        heartbeat
-        1.5s
-        infinite;
-}
-
-
-/* ==================================================
-   CONTROLS
-================================================== */
-
-.controls{
-
-    position:fixed;
-
-    bottom:14px;
-
-    left:0;
-    right:0;
-
-    z-index:20;
-
+/* navigation */
+.navigation{
     display:flex;
-
     justify-content:center;
-
     align-items:center;
-
-    gap:10px;
+    gap:15px;
+    margin-top:25px;
 }
 
-button{
-
-    border:none;
-
+.nav-btn{
+    border:1px solid #ff68c9;
+    background:linear-gradient(135deg,#6d1558,#b51a86);
     color:white;
-
-    background:
-        linear-gradient(
-            135deg,
-            #791557,
-            #4b103e
-        );
-
-    border:
-        1px solid
-        #db5eb6;
-
-    padding:
-        11px
-        20px;
-
-    border-radius:50px;
-
+    border-radius:30px;
+    padding:12px 24px;
     font-family:Georgia,serif;
-
+    font-size:16px;
     cursor:pointer;
-
-    box-shadow:
-        0 0 18px
-        rgba(255,50,190,.18);
-
+    box-shadow:0 0 15px rgba(255,53,187,.3);
     transition:.25s;
 }
 
-button:hover{
-
-    transform:
-        translateY(-2px);
-
-    box-shadow:
-        0 0 25px
-        rgba(255,50,190,.35);
+.nav-btn:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 25px rgba(255,53,187,.65);
 }
 
-button:active{
-
-    transform:
-        scale(.94);
+.nav-btn:active{
+    transform:scale(.95);
 }
 
+.counter{
+    color:#ff9ddd;
+    font-size:14px;
+    min-width:55px;
+}
+
+/* dots */
 .dots{
-
     display:flex;
-
-    gap:6px;
+    justify-content:center;
+    gap:8px;
+    margin-top:18px;
 }
 
 .dot{
-
-    width:7px;
-    height:7px;
-
+    width:8px;
+    height:8px;
     border-radius:50%;
-
-    background:#67435e;
-
+    background:#6d3a61;
     transition:.3s;
 }
 
 .dot.active{
-
-    background:#ff78ce;
-
-    box-shadow:
-        0 0 10px
-        #ff20b5;
+    width:24px;
+    border-radius:10px;
+    background:#ff6bc9;
+    box-shadow:0 0 12px #ff4fbe;
 }
 
+/* footer */
+.footer{
+    text-align:center;
+    margin-top:25px;
+    color:#e9a7d1;
+    font-size:13px;
+    letter-spacing:2px;
+}
 
-/* ==================================================
-   MOBILE
-================================================== */
-
-@media(max-width:600px){
-
-    .countCard{
-
-        padding:
-            35px
-            13px;
+/* mobile */
+@media(max-width:480px){
+    .page{
+        padding:15px 10px 30px;
     }
 
-    .timer{
-
-        gap:5px;
+    .small-title{
+        font-size:12px;
+        letter-spacing:4px;
     }
 
-    .timeBox{
-
-        padding:
-            14px
-            3px;
+    .main-title{
+        font-size:42px;
     }
 
-    .label{
-
-        font-size:7px;
-
-        letter-spacing:1px;
+    .bestie-title{
+        font-size:27px;
     }
 
     .card{
-
-        padding:
-            28px
-            13px
-            90px;
-    }
-
-    .card p{
-
-        font-size:14px;
-
-        line-height:1.85;
+        border-radius:28px;
+        padding:20px 13px 25px;
     }
 
     .characters{
-
-        transform:
-            scale(.9);
+        height:110px;
+        transform:scale(.9);
     }
 
-    .duas{
+    .slides{
+        min-height:430px;
+    }
 
-        gap:7px;
+    .slide h2{
+        font-size:25px;
+    }
+
+    .slide p{
+        font-size:17px;
+        line-height:1.75;
     }
 
     .dua{
-
-        min-height:125px;
-
-        font-size:12px;
-
-        padding:
-            10px
-            7px;
+        font-size:15px;
     }
 
-    button{
-
-        padding:
-            9px
-            15px;
-
-        font-size:12px;
+    .nav-btn{
+        padding:11px 18px;
+        font-size:15px;
     }
 }
-
 </style>
 </head>
 
-
 <body>
 
-
-<!-- GLOW -->
-
-<div class="orb one"></div>
-<div class="orb two"></div>
-
-<div id="particles"></div>
-
-
-<!-- ==================================================
-     COUNTDOWN
-================================================== -->
-
-<section id="countdown">
-
-<div class="countCard">
-
-<div class="top">
-✦ A LITTLE SURPRISE FOR MY BESTIE ✦
+<div class="floating">
+    <span>💗</span>
+    <span>✨</span>
+    <span>💕</span>
+    <span>💖</span>
+    <span>✨</span>
+    <span>💗</span>
 </div>
 
-<div class="bigHeart">
-♡
-</div>
+<div class="page">
 
-<h1>
-Something Special
-</h1>
+    <div class="top">
 
-<div class="bestieName">
-𝑴𝒚 𝑩𝒆𝒔𝒕𝒊𝒆 ♡
-</div>
+        <div class="small-title">
+            ✦ A LITTLE SURPRISE FOR MY BESTIE ✦
+        </div>
 
-<div class="subText">
+        <div class="neon-heart">♡</div>
 
-Your special birthday surprise
-is waiting for you... 🥹💗
+        <div class="main-title">
+            Something<br>Special
+        </div>
 
-<br>
+        <div class="bestie-title">
+            My Bestie ♡
+        </div>
 
-Every second is taking us
-closer to your special moment. ✨
+    </div>
 
-</div>
+    <div class="card">
 
+        <!-- cute characters -->
+        <div class="characters">
 
-<div class="timer">
+            <div class="character bear">
+                <div class="face">
+                    <span class="eye left"></span>
+                    <span class="eye right"></span>
+                    <span class="mouth"></span>
+                </div>
+            </div>
 
-<div class="timeBox">
-<span id="days" class="number">00</span>
-<span class="label">DAYS</span>
-</div>
+            <div class="character bunny">
+                <div class="face">
+                    <span class="eye left"></span>
+                    <span class="eye right"></span>
+                    <span class="mouth"></span>
+                </div>
+            </div>
 
-<div class="timeBox">
-<span id="hours" class="number">00</span>
-<span class="label">HOURS</span>
-</div>
+        </div>
 
-<div class="timeBox">
-<span id="minutes" class="number">00</span>
-<span class="label">MINUTES</span>
-</div>
+        <div class="slides">
 
-<div class="timeBox">
-<span id="seconds" class="number">00</span>
-<span class="label">SECONDS</span>
-</div>
+            <!-- SLIDE 1 -->
+            <section class="slide active">
 
-</div>
+                <h2>💗 Happy Birthday, Bestie 💗</h2>
 
-<div class="target">
-✦ 19 SEPTEMBER • 12:00 AM PKT ✦
-</div>
+                <p class="reveal-line">
+                    Today is all about celebrating you. ✨
+                </p>
 
-</div>
+                <p class="reveal-line">
+                    May your beautiful smile never fade. 🥹💗
+                </p>
 
-</section>
+                <p class="reveal-line">
+                    You deserve happiness, peace and countless beautiful moments.
+                </p>
 
+                <div class="dua reveal-line">
+                    🤲 May Allah bless you with happiness,<br>
+                    success, good health and endless peace. Ameen. 🤍
+                </div>
 
+            </section>
 
-<!-- ==================================================
-     BIRTHDAY
-================================================== -->
+            <!-- SLIDE 2 -->
+            <section class="slide">
 
-<section id="birthday">
+                <h2>🌸 A Special Dua For You</h2>
 
-<div class="slider">
+                <p class="reveal-line">
+                    May Allah open every beautiful door for you.
+                </p>
 
+                <p class="reveal-line">
+                    May every difficulty become easy.
+                </p>
 
-<!-- ==================================================
-     SLIDE 1
-================================================== -->
+                <p class="reveal-line">
+                    May your dreams turn into beautiful realities. ✨
+                </p>
 
-<div class="slide active">
+                <div class="dua reveal-line">
+                    🤲 May Allah always keep you protected,<br>
+                    happy and surrounded by people who genuinely care about you. Ameen. 💗
+                </div>
 
-<div class="card">
+            </section>
 
-<div class="slideNumber">
-01 / 05
-</div>
+            <!-- SLIDE 3 -->
+            <section class="slide">
 
+                <h2>🫶 Our Beautiful Friendship</h2>
 
-<div class="characters">
+                <p class="reveal-line">
+                    Some people enter our lives and become unforgettable.
+                </p>
 
-<div class="character bear">
+                <p class="reveal-line">
+                    You are one of those special people. 💕
+                </p>
 
-<div class="ear left"></div>
-<div class="ear right"></div>
+                <p class="reveal-line">
+                    May our friendship always stay filled with laughter,
+                    crazy memories and endless support. 🥹✨
+                </p>
 
-<div class="eye left"></div>
-<div class="eye right"></div>
+                <div class="dua reveal-line">
+                    🌷 May Allah keep this friendship blessed<br>
+                    and filled with good memories. Ameen.
+                </div>
 
-<div class="mouth"></div>
+            </section>
 
-</div>
+            <!-- SLIDE 4 -->
+            <section class="slide">
 
+                <h2>✨ Your New Chapter</h2>
 
-<div class="character bunny">
+                <p class="reveal-line">
+                    A new year of your life begins today.
+                </p>
 
-<div class="ear left"></div>
-<div class="ear right"></div>
+                <p class="reveal-line">
+                    May it bring you closer to everything you pray for.
+                </p>
 
-<div class="eye left"></div>
-<div class="eye right"></div>
+                <p class="reveal-line">
+                    Keep smiling, keep growing and never stop believing in yourself. 🌸
+                </p>
 
-<div class="mouth"></div>
+                <div class="dua reveal-line">
+                    🤲 May this year be full of barakah,<br>
+                    success, peace and beautiful surprises. Ameen. 💖
+                </div>
 
-</div>
+            </section>
 
-</div>
+            <!-- SLIDE 5 -->
+            <section class="slide">
 
+                <h2>💖 One Last Wish</h2>
 
-<h1>
-Happy Birthday
-</h1>
+                <p class="reveal-line">
+                    Happy Birthday once again, Bestie! 🎂
+                </p>
 
-<h2>
-𝑴𝒚 𝑩𝒆𝒔𝒕𝒊𝒆 ♡
-</h2>
+                <p class="reveal-line">
+                    May your life always be brighter than your happiest moments.
+                </p>
 
-<div class="decor">
-♡ ✦ ♡
-</div>
+                <p class="reveal-line">
+                    Keep that beautiful smile forever. ✨
+                </p>
 
+                <div class="dua reveal-line">
+                    🌙 May Allah grant you everything good<br>
+                    that your heart wishes for. Ameen Summa Ameen. 🤲💗
+                </div>
 
-<p class="revealLine">
-Finally... your special day is here! 🥹💗
-</p>
+            </section>
 
-<p class="revealLine">
-May your day be filled with beautiful
-smiles, peaceful moments and happiness. 🌸
-</p>
+        </div>
 
-<p class="revealLine">
-And may this new chapter of your life
-bring you countless beautiful memories. ✨
-</p>
+        <!-- navigation -->
+        <div class="navigation">
 
-</div>
+            <button class="nav-btn" id="prevBtn" onclick="previousSlide()">
+                ← Prev
+            </button>
 
-</div>
+            <div class="counter" id="counter">
+                1 / 5
+            </div>
 
+            <button class="nav-btn" id="nextBtn" onclick="nextSlide()">
+                Next →
+            </button>
 
+        </div>
 
-<!-- ==================================================
-     SLIDE 2
-================================================== -->
+        <div class="dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
 
-<div class="slide">
+    </div>
 
-<div class="card">
-
-<div class="slideNumber">
-02 / 05
-</div>
-
-
-<div class="characters">
-
-<div class="character bear">
-
-<div class="ear left"></div>
-<div class="ear right"></div>
-
-<div class="eye left"></div>
-<div class="eye right"></div>
-
-<div class="mouth"></div>
-
-</div>
-
-<div class="character bunny">
-
-<div class="ear left"></div>
-<div class="ear right"></div>
-
-<div class="eye left"></div>
-<div class="eye right"></div>
-
-<div class="mouth"></div>
-
-</div>
-
-</div>
-
-
-<h1>
-A Little Message
-</h1>
-
-<div class="decor">
-✦ ── ♡ ── ✦
-</div>
-
-
-<div class="message">
-
-<p class="revealLine">
-Some people make ordinary moments
-feel a little more special. 🌷
-</p>
-
-<p class="revealLine">
-Some memories become precious
-simply because of the people in them. 💕
-</p>
-
-<p class="revealLine">
-And some friendships become
-beautiful parts of our lives. 🥹
-</p>
-
-<p class="revealLine">
-So today, I simply wish you
-a life full of happiness and peace. 💗
-</p>
+    <div class="footer">
+        ✦ MADE WITH LOVE FOR MY BESTIE ✦
+    </div>
 
 </div>
 
-</div>
+<script>
+/* =========================
+   SLIDE SYSTEM
+   ========================= */
 
-</div>
+var currentSlide = 0;
 
+var slides = document.querySelectorAll(".slide");
+var dots = document.querySelectorAll(".dot");
+var counter = document.getElementById("counter");
+var prevBtn = document.getElementById("prevBtn");
+var nextBtn = document.getElementById("nextBtn");
 
 
-<!-- ==================================================
-     SLIDE 3
-================================================== -->
+function hideAllLines(slide){
 
-<div class="slide">
+    var lines = slide.querySelectorAll(".reveal-line");
 
-<div class="card">
+    lines.forEach(function(line){
+        line.classList.remove("show");
+    });
+}
 
-<div class="slideNumber">
-03 / 05
-</div>
 
+function revealLines(slide){
 
-<div class="characters">
+    hideAllLines(slide);
 
-<div class="character bunny">
+    var lines = slide.querySelectorAll(".reveal-line");
 
-<div class="ear left"></div>
-<div class="ear right"></div>
+    lines.forEach(function(line,index){
 
-<div class="eye left"></div>
-<div class="eye right"></div>
+        setTimeout(function(){
 
-<div class="mouth"></div>
+            line.classList.add("show");
 
-</div>
+        }, 400 + (index * 900));
 
-<div class="character bear">
+    });
+}
 
-<div class="ear left"></div>
-<div class="ear right"></div>
 
-<div class="eye left"></div>
-<div class="eye right"></div>
+function showSlide(index){
 
-<div class="mouth"></div>
+    if(index < 0){
+        index = slides.length - 1;
+    }
 
-</div>
+    if(index >= slides.length){
+        index = 0;
+    }
 
-</div>
+    currentSlide = index;
 
+    /* hide every slide */
+    slides.forEach(function(slide){
+        slide.classList.remove("active");
+        hideAllLines(slide);
+    });
 
-<h1>
-Birthday Duas
-</h1>
+    /* activate selected slide */
+    slides[currentSlide].classList.add("active");
 
-<div class="decor">
-🤲 ♡ 🤲
-</div>
+    /* update counter */
+    counter.textContent =
+        (currentSlide + 1) + " / " + slides.length;
 
+    /* update dots */
+    dots.forEach(function(dot,index){
+        dot.classList.toggle(
+            "active",
+            index === currentSlide
+        );
+    });
 
-<div class="duas">
+    /* reveal text */
+    revealLines(slides[currentSlide]);
 
-<div class="dua">
-🤲 May Allah bless you
-with happiness and peace.
-</div>
+    /* button states */
+    if(currentSlide === 0){
+        prevBtn.style.opacity = "0.55";
+    }else{
+        prevBtn.style.opacity = "1";
+    }
 
-<div class="dua">
-🌸 May every sincere dua
-of yours be accepted.
-</div>
+    if(currentSlide === slides.length - 1){
+        nextBtn.textContent = "Replay ↻";
+    }else{
+        nextBtn.textContent = "Next →";
+    }
 
-<div class="dua">
-✨ May Allah protect you
-and guide you always.
-</div>
+}
 
-<div class="dua">
-🕊️ May your heart always
-find peace and hope.
-</div>
 
-<div class="dua">
-🌷 May your new year be
-full of beautiful memories.
-</div>
+function nextSlide(){
 
-<div class="dua">
-💗 May Allah keep
-beautiful smiles on your face.
-</div>
+    if(currentSlide === slides.length - 1){
 
-</div>
+        showSlide(0);
 
-</div>
+    }else{
 
-</div>
+        showSlide(currentSlide + 1);
 
+    }
 
+}
 
-<!-- ==================================================
-     SLIDE 4
-================================================== -->
 
-<div class="slide">
+function previousSlide(){
 
-<div class="card">
+    if(currentSlide === 0){
 
-<div class="slideNumber">
-04 / 05
-</div>
+        showSlide(slides.length - 1);
 
+    }else{
 
-<div class="characters">
+        showSlide(currentSlide - 1);
 
-<div class="character bear">
+    }
 
-<div class="ear left"></div>
-<div class="ear right"></div>
+}
 
-<div class="eye left"></div>
-<div class="eye right"></div>
 
-<div class="mouth"></div>
+/* =========================
+   SWIPE SUPPORT
+   ========================= */
 
-</div>
+var touchStartX = 0;
+var touchEndX = 0;
 
-<div class="character bunny">
+document.addEventListener("touchstart",function(e){
 
-<div class="ear left"></div>
-<div class="ear right"></div>
+    touchStartX = e.changedTouches[0].screenX;
 
-<div class="eye left"></div>
-<div class="eye right"></div>
+},{passive:true});
 
-<div class="mouth"></div>
 
-</div>
+document.addEventListener("touchend",function(e){
 
-</div>
+    touchEndX = e.changedTouches[0].screenX;
 
+    var difference = touchEndX - touchStartX;
 
-<h1>
-For Your Future
-</h1>
+    if(Math.abs(difference) < 50){
+        return;
+    }
 
-<div class="decor">
-🌙 ✦ 🌸
-</div>
+    if(difference < 0){
 
+        nextSlide();
 
-<p class="revealLine">
-May every difficult road become easier. 🤲
-</p>
+    }else{
 
-<p class="revealLine">
-May every dream find its way
-towards reality. ✨
-</p>
+        previousSlide();
 
-<p class="revealLine">
-May every morning bring
-a new reason to smile. 🌷
-</p>
+    }
 
-<p class="revealLine">
-May Allah give you strength,
-patience and peace in every chapter. 🕊️
-</p>
+},{passive:true});
 
-<p class="revealLine">
-And may your future be filled with
-beautiful people and beautiful memories. 💗
-</p>
 
-</div>
+/* =========================
+   START
+   ========================= */
 
-</div>
+showSlide(0);
 
+</script>
 
-
-<!-- ==================================================
-     SLIDE 5
-================================================== -->
-
-<div class="slide">
-
-<div class="card">
-
-<div class="slideNumber">
-05 / 05
-</div>
-
-
-<div class="characters">
-
-<div class="character bunny">
-
-<div class="ear left"></div>
-<div class="ear right"></div>
-
-<div class="eye left"></div>
-    
+</body>
+   </html>
